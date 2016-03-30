@@ -1,1 +1,357 @@
-# hestonst.github.io
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>MinimalMe CV/Resume Template</title>
+
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=970,user-scalable=yes" />
+
+	<link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+
+	<!-- Including Puritan font from Google Web Fonts -->
+	<link  href="http://fonts.googleapis.com/css?family=Puritan:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+	<!-- Including jQuery -->
+	<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.0.0.js" type="text/javascript"></script>
+
+	<!-- Custom functions -->
+	<script src="lib/js/jquery.custom.minimalme.js" type="text/javascript"></script>
+
+	<!-- Including & Initializing tipsy (nicer tooltips) -->
+	<link rel="stylesheet" type="text/css" href="lib/js/tipsy/stylesheets/tipsy.css" />
+	<script type="text/javascript" src="lib/js/tipsy/javascripts/jquery.tipsy.js"></script>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	jQuery(document).ready(function($){
+		$('#social_media a').tipsy({gravity: 's', opacity: 0.9, fade: true});
+		$('#nav a').tipsy({gravity: 's', opacity: 0.9, fade: true});
+		$('.cv_options a').tipsy({gravity: 's', opacity: 0.9, fade: true});
+	});
+	/* ]]> */
+	</script>
+
+	<!-- Including & Initializing Fancybox (gallery & contact form) -->
+	<link rel="stylesheet" type="text/css" href="lib/js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	<script type="text/javascript" src="lib/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="lib/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	jQuery(document).ready(function($){
+		// Defining Fancybox for the work samples section. You can remove it if you do not plan to include such a section:
+		// Start Fancybox gallery
+		$(".portfolio a").fancybox({
+			'padding'			: 10,
+			'titlePosition' 	: 'over',
+			'titleFormat'       : function(title, currentArray, currentIndex, currentOpts) { return '<span id="fancybox-title-over"><strong>' +  (currentIndex + 1) + ' / ' + currentArray.length + '</strong> ' + title + '</span>'; },
+			'transitionIn'		: 'fade',
+			'transitionOut'		: 'fade',
+			'overlayColor'		: '#000',
+			'overlayOpacity'	: 0.8
+		});
+		// End Fancybox gallery
+	});
+	/* ]]> */
+	</script>
+</head>
+
+<body id="top" class="wood brown">
+	<div id="resume">
+		<!-- Start: Social media -->
+		<div id="social_media">
+			<ul>
+				<li><a href="https://www.linkedin.com/in/scott-heston-a798a9115?trk=hp-identity-name" title="LinkedIn">LinkedIn</a></li><li><a href="https://github.com/hestonst" title="GitHub">GitHub</a></li>
+			</ul>
+		</div>
+		<!-- End: Social media -->
+
+		<!-- Start: Header section -->
+		<div class="section head_section">
+			<div class="section_content">
+				<div class="my_info">
+					<h1 class="my_name" title="">Scott Thomas Heston</h1>
+					<div class="my_profession">Software and Industrial Engineering Student</div>
+				</div>
+
+				<div class="text_ruler"><span>Let's Connect</span></div>
+
+				<div class="two_thirds">
+					<img src="img/my-photo.jpg" title="" alt="" class="my_photo" />Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit.
+					<ul class="cv_options">
+						<li><a href="#letsmeet" title="Get in touch" class="cv_email">Let's meet!</a></li>
+						<li><a href="#" title="Download my resume" class="cv_download">Download my resume</a></li>
+					</ul>
+				</div>
+
+				<div class="one_third last_column">
+					<ul class="simple_list">
+						<li><strong>Email:</strong> <a href="mailto:hestonst@gmail.com">hestonst@gmail.com</a></li>
+						<li><strong>Website:</strong> <a href="http://hestonst.github.io">http://hestonst.github.io</a></li>
+						<li><strong>Phone:</strong> (+1) 336.473.1987</li>
+						<li><strong>Address:</strong> 329310 Georgia Tech Station, Atlanta 30332, GA, USA</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- End: Header section -->
+
+		<!-- Start: Navigation -->
+		<div id="nav">
+			<ul>
+				<li><a href="#section1" title="Who is Scott Thomas Heston?">About</a></li><li><a href="#section2" title="Skills &amp; Knowledge">Skills</a></li><li><a href="#section4" title="Work Experience">Experience</a></li><li><a href="#section5" title="Education">Education</a></li><li><a href="#section6" title="Portfolio">Portfolio</a></li><li><a href="#footer" title="Contact me">Contact</a></li>
+			</ul>
+		</div>
+		<!-- End: Navigation -->
+
+		<!-- Start: Section -->
+		<div class="section" id="section1">
+			<h2 class="section_title">Who is Scott Thomas Heston?</h2>
+			<div class="section_content">
+				<div class="half">Lorem ipsum dolor sit amet, <a href="#">consectetuer adipiscing elit</a>, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</div>
+				<div class="half last_column">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</div>
+			</div>
+			<div class="section_footer"><a href="#top" class="go_top">Back to top</a></div>
+		</div>
+		<!-- End: Section -->
+
+		<!-- Start: Section -->
+		<div class="section" id="section3">
+			<h2 class="section_title">Skills &amp; Knowledge</h2>
+			<div class="section_content">
+
+				<div class="text_ruler"><span>Programming Languages</span></div>
+
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>Java</h4>
+						<div class="skillbar"><div class="skillbarfill skill90">Good</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>Python</h4>
+						<div class="skillbar"><div class="skillbarfill skill80">Good</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>MATLAB</h4>
+						<div class="skillbar"><div class="skillbarfill skill50">Proficient</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+				<div class="one_fourth last_column">
+					<div class="skill">
+						<h4>PHP/SQL</h4>
+						<div class="skillbar"><div class="skillbarfill skill30">Proficient</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+
+				<div class="text_ruler"><span>Coding Tools</span></div>
+
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>Git</h4>
+						<div class="skillbar"><div class="skillbarfill skill90">Good</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>Android Studio</h4>
+						<div class="skillbar"><div class="skillbarfill skill70">Good</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>Gradle</h4>
+						<div class="skillbar"><div class="skillbarfill skill40">Proficient</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+
+
+				<div class="text_ruler"><span>Languages</span></div>
+
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>English</h4>
+						<div class="skillbar"><div class="skillbarfill skill100">Fluent</div></div>
+					</div>
+					<p>Native Speaker</p>
+				</div>
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>Spanish/Español</h4>
+						<div class="skillbar"><div class="skillbarfill skill80">Fluent</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+				<div class="one_fourth">
+					<div class="skill">
+						<h4>French/Français</h4>
+						<div class="skillbar"><div class="skillbarfill skill60">Proficient</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+				<div class="one_fourth last_column">
+					<div class="skill">
+						<h4>Russian/Русский Язык</h4>
+						<div class="skillbar"><div class="skillbarfill skill30">Intermediate</div></div>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+			</div>
+			<div class="section_footer"><a href="#top" class="go_top">Back to top</a></div>
+		</div>
+		<!-- End: Section -->
+
+
+		<!-- Start: Section -->
+		<div class="section" id="section4">
+			<h2 class="section_title">Work Experience</h2>
+			<div class="section_content">
+				<div class="job">
+					<div class="one_third">
+						<h3 class="mt0">Senior Pixel Exploiter</h3>
+						<h4>Fictive Web Company</h4>
+
+						<ul class="simple_list mt20">
+							<li><strong>Period:</strong> January 2008 - Present day</li>
+							<li><strong>Job type:</strong> Full-Time</li>
+							<li><strong>References:</strong> Michael Smith</li>
+						</ul>
+					</div>
+					<div class="two_thirds last_column">
+						<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit.</p>
+						<ul>
+							<li>Placerat facer possim assum;</li>
+							<li>Typi non habent claritatem insitam;</li>
+							<li>Legere me lius quod ii legunt saepius.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="ruler"></div>
+
+				<div class="job">
+					<div class="one_third">
+						<h3 class="mt0">Junior Pixel Exploiter</h3>
+						<h4>Another Fictive Company</h4>
+
+						<ul class="simple_list mt20">
+							<li><strong>Period:</strong> March 2005 - December 2007</li>
+							<li><strong>Job type:</strong> Full-Time</li>
+							<li><strong>References:</strong> N/A</li>
+						</ul>
+					</div>
+					<div class="two_thirds last_column">
+						<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit.</p>
+						<ul>
+							<li>Placerat facer possim assum;</li>
+							<li>Typi non habent claritatem insitam;</li>
+							<li>Legere me lius quod ii legunt saepius.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="section_footer"><a href="#top" class="go_top">Back to top</a></div>
+		</div>
+		<!-- End: Section -->
+
+		<!-- Start: Section -->
+		<div class="section" id="section5">
+			<h2 class="section_title">Education</h2>
+			<div class="section_content">
+				<div class="studies">
+					<h3>San Francisco State University</h3>
+					<h4 class="mt10">Bachelor of Arts degree in Conceptual Design. Magna Cum Laude.</h4>
+					<p>Vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+				</div>
+
+				<div class="ruler"></div>
+
+				<div class="studies">
+					<h3>San Francisco School of the Arts</h3>
+				<h4 class="mt10">Class of 1994</h4>
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.</p>
+				</div>
+			</div>
+			<div class="section_footer"><a href="#top" class="go_top">Back to top</a></div>
+		</div>
+		<!-- End: Section -->
+
+		<!-- Start: Section -->
+		<div class="section" id="section6">
+			<h2 class="section_title">Portfolio</h2>
+			<div class="section_content">
+				<ul class="portfolio">
+					<li><a href="img/sample-photos/sample-1.jpg" rel="portfolio"><img src="img/sample-photos/sample-1-tb.jpg" alt="" title="" /></a></li>
+					<li><a href="img/sample-photos/sample-2.jpg" rel="portfolio"><img src="img/sample-photos/sample-2-tb.jpg" alt="" title="" /></a></li>
+					<li><a href="img/sample-photos/sample-3.jpg" rel="portfolio"><img src="img/sample-photos/sample-3-tb.jpg" alt="" title="" /></a></li>
+					<li class="last_in_row"><a href="img/sample-photos/sample-4.jpg" rel="portfolio"><img src="img/sample-photos/sample-4-tb.jpg" alt="" title="" /></a></li>
+					<li><a href="img/sample-photos/sample-5.jpg" rel="portfolio"><img src="img/sample-photos/sample-5-tb.jpg" alt="" title="" /></a></li>
+					<li><a href="img/sample-photos/sample-6.jpg" rel="portfolio"><img src="img/sample-photos/sample-6-tb.jpg" alt="" title="" /></a></li>
+					<li><a href="img/sample-photos/sample-7.jpg" rel="portfolio"><img src="img/sample-photos/sample-7-tb.jpg" alt="" title="" /></a></li>
+					<li class="last_in_row"><a href="img/sample-photos/sample-8.jpg" rel="portfolio"><img src="img/sample-photos/sample-8-tb.jpg" alt="" title="" /></a></li>
+				</ul>
+			</div>
+			<div class="section_footer"><a href="#top" class="go_top">Back to top</a></div>
+		</div>
+		<!-- End: Section -->
+
+		<div class="clear"></div> <!-- Do not remove -->
+	</div>
+
+	<!-- Start: Footer -->
+	<div id="footer">
+		<div class="section">
+			<div class="section_content">
+				<div class="one_third">
+					<h3 class="footer_title"><span>Sites I Love</span></h3>
+
+					<ul>
+						<li><a href="http://qbkl.net">QBKL Studio - Web Design Studio</a></li>
+						<li><a href="http://blogsessive.com">Blogsessive.com - Blogging Tips</a></li>
+						<li><a href="http://themeforest.net/?ref=QBKL">ThemeForest</a></li>
+						<li><a href="http://themeforest.net/?ref=QBKL">Click here to buy <strong>MinimalMe</strong></a></li>
+					</ul>
+				</div>
+
+				<div class="one_third">
+					<h3 class="footer_title"><span>Latest Tweets</span></h3>
+
+					<ul id="twitter_update_list">
+						<li></li>
+					</ul>
+					<p><a href="http://twitter.com/Blogsessive" class="twitter_link"><strong>Follow me on Twitter</strong></a></p>
+					<!-- Edit the above link to make it point to your own Twitter profile -->
+				</div>
+
+				<div id="letsmeet" class="one_third last_column">
+					<h3 class="footer_title"><span>Let's Meet</span></h3>
+
+					<iframe width="270" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1+Infinite+Loop+Cupertino,+CA+95014&amp;aq=&amp;sll=37.330584,-122.027657&amp;sspn=0.008377,0.020664&amp;vpsrc=0&amp;ie=UTF8&amp;hq=&amp;hnear=1+Infinite+Loop,+Cupertino,+California+95014&amp;t=m&amp;ll=37.330584,-122.027636&amp;spn=0.01365,0.023088&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+
+					<p><strong>Find me at:</strong><br />
+					15 Fictive Street, City, Country</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End: Footer -->
+
+	<!-- Twitter Stream JavaScript -->
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="https://api.twitter.com/1/statuses/user_timeline.json?screen_name=Blogsessive&callback=twitterCallback2&count=5"></script>
+	<!-- In the line above, replace "Blogsessive.json" with your own "username.json" to pull your latest personal tweets -->
+
+</body>
+</html>

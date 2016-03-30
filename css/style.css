@@ -1,0 +1,672 @@
+/* MinimalMe - CV / Resume Template by QBKL */
+
+/* 1. General */
+
+body {
+	margin: 0 auto;
+	padding: 30px 0;
+	background: #111;
+	background-attachment: fixed;
+	color: #666;
+	font: normal normal 12px Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1.6em;
+}
+
+#resume {
+	width: 870px;
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+	background: #fff;
+	border: 0 solid #000;
+}
+
+#footer {
+	width: 870px;
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+	background: #000;
+}
+
+ul, ol {
+	margin: 1em 0;
+	padding-left: 30px;
+}
+
+img {
+	background: #fff;
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+
+.clear:after {
+	content: "."; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+	font-size: 0;
+}
+
+.clear { display: inline-table; }
+
+/* Hide from IE/Mac \*/
+* html .clear { height: 1%; }
+.clear { display: block; }
+/* Hide from IE/Mac */
+
+
+/* 2. Layout */
+
+.section {
+	width: 870px;
+	margin-top: 60px;
+	border-top: 1px solid #444;
+}
+
+.section_content {
+	width: 870px;
+	overflow: hidden;
+	margin-top: 30px;
+}
+
+.section_footer {
+	width: 870px;
+	overflow: hidden;
+	margin-top: 30px;
+	padding-top: 10px;
+	/*border-top: 1px solid #999;*/
+}
+
+.half, .one_third, .two_thirds, .one_fourth, .three_fourths {
+	float: left;
+	margin-right: 30px;
+	overflow: hidden;
+}
+
+.half { width: 420px; }
+.one_third { width: 270px; }
+.two_thirds { width: 570px; }
+.one_fourth { width: 195px; }
+.three_fourths { width: 645px; }
+
+.last_column { margin-right: 0!important; }
+
+.job, .studies {
+	width: 870px;
+	overflow: hidden;
+}
+
+.ruler {
+	clear: both;
+	display: block;
+	border-bottom: 1px solid #ccc;
+	margin: 0 0 30px 0;
+	padding: 0 0 30px 0;
+}
+
+.mt0 { margin-top: 0!important; }
+.mt10 { margin-top: 10px!important; }
+.mt20 { margin-top: 20px!important; }
+.mt30 { margin-top: 30px!important; }
+
+/* 3. Generic typography */
+
+a {
+	color: #000;
+	text-decoration: underline;
+	outline: 0;
+}
+
+a:hover {
+	color: #444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.1em;
+	color: #000;
+	padding: 0;
+	margin: 1em 0 0.5em 0;
+	font-family: "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+}
+
+h1 {
+	font-weight: normal;
+	font-size: 20px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+h2 {
+	font-weight: normal;
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+h3 {
+	font-size: 14px;
+	font-weight: bold;
+	font-family: "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+}
+
+h4 {
+	font-size: 12px;
+	font-weight: normal;
+	font-family: "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+}
+
+h1.my_name {
+	display: block;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	font: normal normal 24px "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+h2.section_title {
+	display: block;
+	margin: 0;
+	padding: 20px 0;
+	border-top: 1px solid #444;
+	border-bottom: 1px solid #999;
+	color: #000;
+	font: normal normal 14px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+h3.footer_title {
+	display: block;
+	margin: 0 0 30px 0;
+	font: normal normal 10px "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	background: url(../img/px-dark.gif) repeat-x center center;
+	color: #aaa;
+	text-align: center;
+}
+
+h3.footer_title span {
+	background: #000;
+	display: inline-block;
+	padding: 0 10px;
+}
+
+p:first-child {	margin-top: 0; }
+
+.text_ruler {
+	clear: both;
+	display: block;
+	background: url(../img/px-gray.gif) repeat-x center center;
+	text-align: center;
+}
+
+.text_ruler span {
+	display: inline-block;
+	padding: 0 10px;
+	margin: 30px 0;
+	color: #000;
+	font: normal normal 10px "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.5em;
+	text-transform: uppercase;
+	background: #fff;
+}
+
+.go_top {
+	float: right;
+	font: normal normal 11px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.2em;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #000!important;
+}
+
+.go_top:hover {	color: #444!important; }
+
+blockquote {
+	margin: 20px 0;
+	padding: 5px 0 5px 50px;
+	font: italic normal 16px Georgia, serif;
+	line-height: 26px;
+	color: #888;
+	background: url(../img/quote.gif) no-repeat top left;
+}
+
+/* 4. Content Elements */
+
+table {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th, td {
+	padding: 8px 15px;
+	border: 1px solid #ccc;
+	text-align: left;
+	display: table-cell;
+	vertical-align: top;
+}
+
+th {
+	font: normal normal 12px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	background: #e5e5e5;
+	color: #000;
+}
+
+.alt_row td {
+	background: #f5f5f5;
+}
+
+tr:hover td {
+	background: #eee;
+}
+
+.simple_list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* 5. Head Section */
+
+.head_section {
+	width: 770px;
+	margin: 0 auto!important;
+	padding: 0 50px 30px 50px;
+	border-top: 2px solid #444;
+	border-bottom: 1px solid #999;
+	background: #f9f9f9;
+	font-size: 12px;
+}
+
+.head_section .section_content { width: 770px; }
+
+.head_section .half { width: 370px; }
+
+.head_section .one_third { width: 230px; }
+
+.head_section .two_thirds { width: 510px;}
+
+.head_section .text_ruler span { background: #fafafa; }
+
+.my_profession {
+	display: block;
+	margin-top: 10px;
+	color: #666;
+	font: normal normal 14px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.4em;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.my_photo {
+	float: left;
+	margin: 0 20px 0 0;
+	background: #fff;
+	padding: 4px;
+	border: 1px solid #ccc;
+}
+
+.cv_options {
+	display: block;
+	margin: 10px 0 0 0;
+	padding: 5px 0;
+	list-style: none;
+	font: normal normal 11px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+.cv_options li {
+	display: inline;
+	margin-right: 20px;
+}
+
+.cv_options li a {
+	padding-left: 13px;
+	text-decoration: none;
+}
+
+.cv_options li a.cv_email { background: url(../img/i-email.gif) no-repeat center left; }
+.cv_options li a.cv_download { background: url(../img/i-download.gif) no-repeat center left; }
+.cv_options li a.cv_print { background: url(../img/i-print.gif) no-repeat center left; }
+
+/* 6. Navigation / Social Media */
+
+#nav, #social_media {
+	padding: 15px 0;
+	color: #000;
+	font: normal normal 11px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.4em;
+	text-transform: uppercase;
+}
+
+#nav { border-bottom: 1px solid #999; }
+#social_media { border-top: 1px solid #999; }
+
+#nav ul, #social_media ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 870px;
+	overflow: hidden;
+	text-align: center;
+}
+
+#nav li, #social_media li {
+	display: inline;
+	margin: 0 15px;
+	padding: 0;
+}
+
+#nav li a, #social_media li a {
+	color: #666;
+	text-decoration: none;
+}
+
+#nav li a:hover, #social_media li a:hover {
+	color: #000;
+}
+
+/* 7. Technical Skills */
+
+.skill {
+	margin-bottom: 15px;
+}
+
+.skill h4 {
+	margin-top: 0!important;
+}
+
+.skillbar {
+	display: block;
+	height: 7px;
+	background: #eee;
+}
+
+.skillbarfill {
+	display: block;
+	height: 7px;
+	line-height: 7px;
+	background: #ccc;
+	border-right: 1px solid #666;
+	text-indent: -9999px;
+}
+
+.skill10 { width: 10%!important; }
+.skill20 { width: 20%!important; }
+.skill30 { width: 30%!important; }
+.skill40 { width: 40%!important; }
+.skill50 { width: 50%!important; }
+.skill60 { width: 60%!important; }
+.skill70 { width: 70%!important; }
+.skill80 { width: 80%!important; }
+.skill90 { width: 90%!important; }
+.skill100 { width: 100%!important; border-right: 0!important;}
+
+/* 9. Portfolio: Gallery */
+
+ul.portfolio {
+	margin: 0;
+	padding: 0;
+	margin-top: -30px;
+	list-style: none;
+}
+
+ul.portfolio li {
+	float: left;
+	width: 195px;
+	margin: 30px 30px 0 0;
+}
+
+ul.portfolio li.last_in_row {
+	margin-right: 0;
+}
+
+ul.portfolio li img {
+	max-width: 185px;
+}
+
+/* 10. Footer */
+
+#footer {
+	color: #999;
+	font-size: 11px;
+}
+
+#footer .section, #footer .section_content {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+#footer ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-bottom: 1px solid #222;
+}
+
+#footer li {
+	padding: 4px 0;
+	border-top: 1px solid #222;
+}
+
+#footer a {	color: #fff; text-decoration: none; }
+#footer a:hover { color: #ccc; }
+
+.twitter_link {
+	font: normal normal 11px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	line-height: 1em;
+	letter-spacing: 0.2em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+/* 10.1 Contact Form */
+
+#contact_form label {
+	display: inline-block;
+	width: 60px;
+	margin-right: 10px;
+	vertical-align: top;
+	color: #666;
+	line-height: 24px;
+}
+
+#contact_form label.error {
+	display: block;
+	width: 198px;
+	margin: 0 0 0 70px!important;
+	line-height: 18px;
+	color: #fc0;
+}
+
+#contact_form .text_box {
+	display: inline-block;
+	width: 198px;
+	border: 0;
+	border-bottom: 1px solid #444;
+	font: normal normal 11px Arial, Tahoma, Verdana, sans-serif;
+	color: #ccc;
+	background: #111;
+	line-height: 16px;
+}
+
+#contact_form input.text_box {
+	height: 24px;
+	line-height: 25px;
+}
+
+#contact_form textarea.text_box {
+	width: 194px;
+}
+
+#contact_form_message p {
+	text-align: center;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #444;
+}
+
+.button {
+	font: normal normal 11px "Puritan", "Trebuchet MS", Arial, Tahoma, Verdana, sans-serif;
+	padding: 6px 10px;
+	overflow: visible;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: #fff;
+	border: 0;
+	background: #666;
+	cursor: pointer;
+}
+
+.button:hover {
+	color: #ddd;
+	background: #333;
+}
+
+.msg_success { color: #5d0; }
+
+.msg_error { color: #f30; }
+
+
+/* 11. Color schemes */
+
+/* 11.1 Orange scheme */
+/* <body id="top" class="orange"> */
+
+body.orange { background-color: #f60; }
+body.orange a { color: #f60; }
+body.orange a:hover { color: #000; }
+body.orange .section, body.orange h2.section_title { border-top: 1px solid #f60; }
+body.orange .head_section { border-top: 2px solid #f60; }
+body.orange .skillbarfill { background-color: #f60; border: none; }
+
+/* 11.2 Yellow scheme */
+/* <body id="top" class="yellow"> */
+
+body.yellow { background-color: #fc0; }
+body.yellow .section, body.yellow h2.section_title { border-top: 1px solid #fc0; }
+body.yellow .head_section { border-top: 2px solid #fc0; }
+body.yellow .skillbarfill { background-color: #fc0; border: none; }
+
+/* 11.3 Red scheme */
+/* <body id="top" class="red"> */
+
+body.red { background-color: #f03; }
+body.red a { color: #f03; }
+body.red a:hover { color: #000; }
+body.red .section, body.red h2.section_title { border-top: 1px solid #f03; }
+body.red .head_section { border-top: 2px solid #f03; }
+body.red .skillbarfill { background-color: #f03; border: none; }
+
+/* 11.4 Blue scheme */
+/* <body id="top" class="blue"> */
+
+body.blue { background-color: #09f; }
+body.blue a { color: #08e; }
+body.blue a:hover { color: #000; }
+body.blue .section, body.blue h2.section_title { border-top: 1px solid #09f; }
+body.blue .head_section { border-top: 2px solid #09f; }
+body.blue .skillbarfill { background-color: #09f; border: none; }
+
+/* 11.5 Cyan scheme */
+/* <body id="top" class="cyan"> */
+
+body.cyan { background-color: #0de; }
+body.cyan a { color: #0ab; }
+body.cyan a:hover { color: #000; }
+body.cyan .section, body.cyan h2.section_title { border-top: 1px solid #0de; }
+body.cyan .head_section { border-top: 2px solid #0de; }
+body.cyan .skillbarfill { background-color: #0de; border: none; }
+
+/* 11.6 Green scheme */
+/* <body id="top" class="green"> */
+
+body.green { background-color: #6b0; }
+body.green a { color: #490; }
+body.green a:hover { color: #000; }
+body.green .section, body.green h2.section_title { border-top: 1px solid #6b0; }
+body.green .head_section { border-top: 2px solid #6b0; }
+body.green .skillbarfill { background-color: #6b0; border: none; }
+
+/* 11.7 Pink scheme */
+/* <body id="top" class="pink"> */
+
+body.pink { background-color: #f52887; }
+body.pink a { color: #f52887; }
+body.pink a:hover { color: #000; }
+body.pink .section, body.pink h2.section_title { border-top: 1px solid #f52887; }
+body.pink .head_section { border-top: 2px solid #f52887; }
+body.pink .skillbarfill { background-color: #f52887; border: none; }
+
+/* 11.8 Purple scheme */
+/* <body id="top" class="purple"> */
+
+body.purple { background-color: #2e0854; }
+body.purple a { color: #551a8b; }
+body.purple a:hover { color: #000; }
+body.purple .section, body.purple h2.section_title { border-top: 1px solid #551a8b; }
+body.purple .head_section { border-top: 2px solid #551a8b; }
+body.purple .skillbarfill { background-color: #551a8b; border: none; }
+
+/* 11.9 Aqua scheme */
+/* <body id="top" class="aqua"> */
+
+body.aqua { background-color: #32cd99; }
+body.aqua a { color: #238e68; }
+body.aqua a:hover { color: #000; }
+body.aqua .section, body.aqua h2.section_title { border-top: 1px solid #32cd99; }
+body.aqua .head_section { border-top: 2px solid #32cd99; }
+body.aqua .skillbarfill { background-color: #32cd99; border: none; }
+
+/* 11.10 Brown scheme */
+/* <body id="top" class="brown"> */
+
+body.brown { background-color: #8B1A1A; }
+body.brown a { color: #8B1A1A; }
+body.brown a:hover { color: #000; }
+body.brown .section, body.brown h2.section_title { border-top: 1px solid #8B1A1A; }
+body.brown .head_section { border-top: 2px solid #8B1A1A; }
+body.brown .skillbarfill { background-color: #8B1A1A; border: none; }
+
+/* 12. Body image backgrounds */
+
+body.light, body.default { background-image: url(../img/patterns/light.gif); }
+body.dark { background-image: url(../img/patterns/dark.gif); }
+body.salem { background-image: url(../img/patterns/salem.gif); }
+body.waves { background-image: url(../img/patterns/waves.gif); }
+body.khaki { background-image: url(../img/patterns/khaki.gif); }
+body.cellar { background-image: url(../img/patterns/cellar-heat.gif); }
+body.gunpowder { background-image: url(../img/patterns/gunpowder-velvet.gif); }
+body.royal { background-image: url(../img/patterns/royal-red.gif); }
+body.haunted { background-image: url(../img/patterns/haunted-two.gif); }
+body.paisley { background-image: url(../img/patterns/simple-paisley.gif); }
+body.subliminal { background-image: url(../img/patterns/subliminal.gif); }
+body.winchester { background-image: url(../img/patterns/winchester-walls.gif); }
+body.wood { background-image: url(../img/patterns/subtle-wood.gif); }
