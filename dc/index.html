@@ -1,0 +1,135 @@
+<!-- Autor: Scott Thomas Heston Aclaración de fuentes intelectuales: para la realización de este trabajo
+se ha consultado las seguientes fuentes: https://www.youtube.com/watch?v=8TBh5ghRZrI&feature=youtu.be -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vast 2017 Mini-Challenge 3 Sample</title>
+	<style media="screen">
+		svg.banner { width: 100%; height: auto; }
+	</style>
+	<link rel="stylesheet" href="dc.css">
+
+
+</head>
+<body>
+	<h1>VAST 2017 Mini-Challenge 3 Comparison Tool</h1>
+
+  A viewing tool for the VAST MC 3 data, after applying various filters. The idea is to be able to see clearly where the most <br>drastic changes took place between March 2014 and December 2016.
+  The available filters are
+  <a id="plant-Health" href="#" onclick="drawGraph('Plant-Health','1')">Plant-Health</a>,
+  <a id="rgb" href="#" onclick="drawGraph('RGB','1')">RGB</a>,
+  <a id="Floods-Burned-Land" href="#" onclick="drawGraph('Floods-Burned-Land','1')">Floods-Burned-Land</a>,
+  <a id="Moisture-Differentiation" href="#" onclick="drawGraph('Moisture-Differentiation','1')">Moisture-Differentiation</a>, and
+  <a id="NDVI" href="#" onclick="drawGraph('NDVI','1')">NDVI</a>.
+  <br/><br/>
+
+  <svg id="One" width="425" height="425">
+    <image id="One" width="425" height="425" xlink:href="data/lake1RGB.jpg"/>
+  </svg>
+  <svg id="Two" width="425" height="425">
+    <image id="Two" width="425" height="425" xlink:href="data/lake12RGB.jpg"/>
+  </svg>
+  <div id="avgBright">
+      <strong id = "titulo">Variation in RBG</strong>
+      <br/>
+  </div>
+
+	<script src="crossfilter.js"></script>
+	<script src="d3.js"></script>
+  <!-- actualmente d3 v4 rompe a dc.js -->
+	<script src="dc.js"></script>
+
+	<script>
+      var svg = d3.select("svg#One");
+      var svg2 = d3.select("svg#Two");
+      var rectDiv = 5; //para cambiar en versión final del minichallenge?
+      var width = svg.attr("width");
+      var height = svg.attr("height");
+      var avgBrightChart = dc.rowChart("#avgBright")
+      var alreadySelected = false;
+      //usado para resolver orden inconsistente dentro de las llamadas a onClick
+      //realizadas por dc
+      function drawGraph(filterSelection, image) {
+						d3.selectAll("image#One").attr("xlink:href","data/lake1" + filterSelection + ".jpg");
+						d3.selectAll("image#Two").attr("xlink:href","data/lake12" + filterSelection + ".jpg");
+						d3.selectAll("strong#titulo").text("Variation in " + filterSelection);
+            d3.csv("data/data.csv", function(err, rawData) {
+              // image,filter,row,column,diffInAverage
+              // 1,Plant-Health,1,1,6
+              // 1,Plant-Health,1,2,4
+              // 1,Plant-Health,1,3,11
+              // 1,Plant-Health,1,4,6
+              // 1,Plant-Health,1,5,8
+              // 1,Plant-Health,2,1,26
+              // 1,Plant-Health,2,2,22
+              // 1,Plant-Health,2,3,18
+                if (err) throw err;
+                var data = rawData.filter( function(d) {return (d["filter"] == filterSelection);});
+                d3.selectAll('.shader').remove();
+                svg.selectAll(".shader")
+                    .data(data).enter().append("rect")
+                    .attr("x", function(d) {return Math.round((d.column-1)*width/rectDiv);})
+                    .attr("y", function(d) {return Math.round((d.row-1)*height/rectDiv);})
+                    .attr("height", height/rectDiv)
+                    .attr("width", width/rectDiv)
+                    .attr("class", "shader")
+                    .attr("id", function(d) {return("val" + String(d.diffInAverage));})
+                    .style("fill", "white")
+                    .attr("fill-opacity", "0");
+                svg2.selectAll(".shader")
+                    .data(data).enter().append("rect")
+                    .attr("x", function(d) {return Math.round((d.column-1)*width/rectDiv);})
+                    .attr("y", function(d) {return Math.round((d.row-1)*height/rectDiv);})
+                    .attr("height", height/rectDiv)
+                    .attr("width", width/rectDiv)
+                    .attr("class", "shader")
+                    .attr("id", function(d) {return("val" + String(d.diffInAverage));})
+                    .style("fill", "white")
+                    .attr("fill-opacity", "0");
+
+                // crossfilter: tiene métodos add, remove, reduce
+                var ndx = crossfilter(data);
+                var allData = ndx.groupAll();
+                // la funcción de crossfilter es buscar entre dimensiones
+                // TODO: poco claro si se puede hacer un ordenamiento con una
+                // dimension, y filtrar por otra. preguntar.
+
+                var avgBrightDim = ndx.dimension(function(d) { return d['diffInAverage']});
+                var avgBrightGroup = avgBrightDim.group();
+
+
+                avgBrightChart
+                    .width(width)
+                    .height(height)
+                    .dimension(avgBrightDim)
+                    .group(avgBrightGroup)
+                    .elasticX(true)
+                    .ordering(function(d){return -Math.abs(d.key);});
+                dc.renderAll();
+                var enter = d3.selectAll("g.row")
+                    .select('rect')
+                    .on("click.custom", function(d) {
+                          if (alreadySelected && d3.select(this).attr("class") == "selected") {
+                              console.log(this);
+                              console.log(d3.select(this).attr("class") == "selected");
+                              console.log(d);
+
+                              d3.selectAll(".shader#"+"val"+String(d.key)).transition().attr("fill-opacity", "0");
+                            }
+                          else {
+                            alreadySelected = true;
+                            console.log(this);
+                            console.log(d3.select(this).attr("class") == "selected");
+                            console.log(d);
+                            d3.selectAll(".shader#"+"val"+String(d.key)).transition().attr("fill-opacity", "0.4");
+                          }
+                    });
+            }
+      )};
+      drawGraph("RGB", '1');
+
+	</script>
+</body>
+</html>
