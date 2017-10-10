@@ -83,14 +83,14 @@ img {
 
 .half, .one_third, .two_thirds, .one_fourth, .three_fourths {
 	float: left;
-	margin-right: 30px;
+	margin-right: 25px;
 	overflow: hidden;
 }
 
 .half { width: 420px; }
 .one_third { width: 270px; }
 .two_thirds { width: 570px; }
-.one_fourth { width: 195px; }
+.one_fourth { width: 190px; }
 .three_fourths { width: 645px; }
 
 .last_column { margin-right: 0!important; }
