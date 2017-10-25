@@ -5,10 +5,10 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width">
       <title>LP Visualizer</title>
-      <!--      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>-->
-      <script src="d3.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+<!--      <script src="d3.js"></script>-->
       <script src="helperFunctions.js"></script>
-      <script src="Plot.js"></script>       
+       <script src="Plot.js"></script>       
       <script src="bindEventListeners.js"></script>
       <link rel="stylesheet" type="text/css" href="main.css">
    </head>
@@ -18,15 +18,15 @@
 <!--
          This page steps through the process needed to set up and run Dantzig's simplex method to solve linear optimization problems, illustrating each step with graphical examples. It then compares the efficiency of your own computer solving the given problem graphically and with the simplex method. Start by entering an optimization problem, or choose an example that demonstrates <a  onclick="populatePredefinedCase('canonicalInequalityForm')"  href="#">the simplex method on a linear problem in canonical inequality form,</a> <a onclick="populatePredefinedCase('lowerBound')"  href="#">the simplex method on a linear problem with multivariable contraints with a lower bound,</a> <a onclick="populatePredefinedCase('noFeasibleSet')"  href="#">the simplex method with no feasible set,</a> <a onclick="populatePredefinedCase('unboundedFeasibleSetAndSolution')" href="#">the simplex method with an unbounded feasible set and a solution,</a> or <a onclick="populatePredefinedCase('unboundedFeasibleSetAndNoSolution')" href="#">the simplex method with an unbounded feasible set and no solution.</a>
 -->
-          <text>Hello ISyE 3833 Scholars, <br> This page is an initial trial of an interactive webpage that can demonstrate concepts of linear programming that are on the practice tests uploaded to T-Square. The idea is for you to load each example by clicking on the links below, and play around with the resulting plots so that you can have a more interactive experience with the concepts. If you like (or dislike) this site, please fill out </text><a href="https://goo.gl/forms/VJ2ic1KC7cZOiVb02">this survey</a><text>, and it will help me better understand how I can make more pages like this in the future. --Your Classmate</text><br><br>
-          <text>Examples and Comprehension Questions:<br> </text>
-
+          <text>Hello ISyE 3833 Scholars, <br> This page is an initial trial of an interactive webpage that can demonstrate concepts of linear programming that are on the practice tests uploaded to T-Square. The idea is for you to load each example by clicking on the links below, and play around with the resulting plots so that you can have a more interactive experience with the concepts. If you like (or dislike) this site, please fill out </text><a href="https://goo.gl/forms/VJ2ic1KC7cZOiVb02">this survey</a><text>, and it will help me better understand how I can make more pages like this in the future. --Your Classmate</text><br><br> 
+          <text>Examples and Comprehension Questions:<br> </text> 
+          
           <a onclick="populatePredefinedCase('halfSpace')" href="#">Example 1: a single half-space</a><text>: the first principle from which all LPs in canonical inequality form are built! Try moving this around the plot to get comfortable with the graphical representation of a constraint.<br> Question 1: Can we have any basic solutions with only one half-space plotted? <br> <br>
-
+          
 <!--          Question 2: Is there an upper bound to the number of basic solutions we can have? (Hint: think of how constraints can intersect.) TODO: THINK ABOUT IF THIS WORKS WITH GAUSSIAN REDUC <br>-->
 
 <!--          Question 2: Is there an upper bound to the number of basic solutions we can have? (Hint: think of how constraints can intersect.) TODO: THINK ABOUT IF THIS WORKS WITH GAUSSIAN REDUC <br>-->
-
+          
           <a onclick="populatePredefinedCase('simpleExample')" href="#">Example 2: a minimal example of a LP in canonical inequality form</a><text>
           <br>Question 2: Can we have a LP in canonical inequality form with an unbounded feasible set?
           <br>Question 3: Can an optimal iteration of the objective function ever bisect the feasible set (Hint: can the blue line ever go through the green region)?
@@ -35,9 +35,9 @@
           <text><br>
               Question 5: Can we have an unbounded feasible set with a finite optimal solution?
               <br>Question 6: What condition is necessary to be able to plot an optimal iteration of the objective function if there is an unbounded solution set?<br>
-
-
-
+              
+          
+          
           </text>
          <br>
          <span id="model" class="container" style="text-align: left; width: 600px; height: 100%;">
@@ -77,34 +77,37 @@
                </svg>
             </g>
          </span>
-         <span id="LPPlot" class="container" style="position: relative;width: 600px; height: 100%;">
+         <span id="LPPlot" class="container" style="position: relative;width: 600px; height: 100%;"> 
          </span>
          <p></p>
       </div>
-
+       
        <text> Plot Legend: The filled in dots (which you can mouse over to see their values) represent basic solutions. If they are black, they are basic infeasible solutions. If they are green, they are basic feasible solutions. (Bonus Question: Why do we refer to these points as basic solutions?) The blue line is the optimal instance of our objective function, i.e. our objective function set equal to our optimal value. The entire green region is the feasible set, which is empty if not plotted. If it continues to the edge of the graph, it is unbounded. The feasible set consists of innumerably infinite feasible solutions, but only those solutions that intersect the blue optimal iteration of the objective function are optimal feasible solutions.</text> <br> <br>
-
-       <text> Answers to questions:
+       
+       <text> Answers to questions: 
             <br> Question 1: Can we have any basic solutions with only one half-space plotted? No, we cannot. Basic solutions are where constraints intersect in the space spanned by our decision variables. If there is only one constraint, there cannot be any intersections because one line cannot intersect with itself. <br>
 <!--
-
+           
            <br> Question 2: Is there an upper bound to the number of basic solutions we can have? Tricky question! No, there is not; but if all the constraints are distinct, there is. Consider how two lines can intersect: they can either be distinct lines with non-equal slopes and intersect at exactly one point, or be the same line and intersect at all points. In the case that all constraints are distinct, the number of basic solutions is bound by the number of constraints.<br>
-
+           
 -->
            <br> Question 2: Can we have a LP in canonical inequality form with an unbounded feasible set? We can! Make the coefficients on a variable in the first constraint negative. <br>
-
+           
            <br> Question 3: Can an optimal iteration of the objective function ever bisect the feasible set (Hint: can the blue line ever go through the green region)? No, it can't. This is a result of the proof given in lecture that any optimal solution must lie on the border of the feasible set. Formally, we can say that because the derivative of each binding constraint with respect to each variable in the objective function is a constant and therefore monotonic, any reduction in slack (i.e. move towards the border of the feasible region) will result in the same vector of change in the objective value. If you want some fun, try to make the optimal iteration of the objective function spin around the feasible set by adjusting the objective function values.<br>
-
+           
             <br> Question 4: Can we have a non-basic optimal feasible solution? We can, but if and only if our objective function is parallel to a binding constraint. To better understand this, try to change the values of the objective function to see why we cannot have a non-basic optimal feasible solution if the objective function is not parallel to a binding constraint (Hint: the basic solutions are the circles on the plot that you can mouseover. Other solutions are simply unlabeled points in the feasible set).<br>
-
-
+           
+           
            <br> Question 5: Can we have an unbounded feasible set with a finite optimal solution? We can. Try switching between maximization and minimization as our objective function and remember that minimizing a function is equivalent to maximizing its negative. <br>
-
+          
           <br> Question 6: What condition is necessary to be able to plot an optimal iteration of the objective function if there is an unbounded solution set? There must either be a single optimal solution or a line of optimal solutions along the border of the feasible region. This only happens when the objective function is parallel to a binding constraint. <br>
+           
+         <br>Extra Questions for the Interested Reader: Is the feasible region of a LP always a geometric simplex? (Hint: In two dimensions, is the feasible region always a triangle?) Can a concave feasible set ever be formed using linear constraints? What are the implications of having a concave feasible set? If a concave feasible set is possible under some form of constraint, how can a computer test for convexity? <br>
+           
           </text>
-
+       
 <!--
-      <text>Your computer is able to graph and solve your linear optimization problem (LP) just as you've entered it above by testing all the intersection points and regions on the plot individually. It can do this because it's a fairly simple problem with only two variables involved. In order for computers to solve much more complicated systems of linear equations--like those tipically found in industry--we need a more efficient method. This is why we use Dantzig's simplex method to "optimize" the process of finding the optimal solution! In general, mathematical programming can be described as a collection of techniques to help computers solve problems that are too costly to compare each individual possibility to find an optimal solution. To better understand Dantzig's method, we'll continue with the same LP in two dimensions, visualizing each step with a graph. Later, we'll examine how long it takes your computer to solve your LP using both the graphical method and the simplex method.
+      <text>Your computer is able to graph and solve your linear optimization problem (LP) just as you've entered it above by testing all the intersection points and regions on the plot individually. It can do this because it's a fairly simple problem with only two variables involved. In order for computers to solve much more complicated systems of linear equations--like those tipically found in industry--we need a more efficient method. This is why we use Dantzig's simplex method to "optimize" the process of finding the optimal solution! In general, mathematical programming can be described as a collection of techniques to help computers solve problems that are too costly to compare each individual possibility to find an optimal solution. To better understand Dantzig's method, we'll continue with the same LP in two dimensions, visualizing each step with a graph. Later, we'll examine how long it takes your computer to solve your LP using both the graphical method and the simplex method. 
       <div class="container">
           <br><text>The linear model that you've entered requires a conversion to canonical inequality form. This is because the simplex method can only be used on linear optimization problems with positive values and a fully bounded feasible region. All linear problems can be converted to such a form, called its canonical inequality form. Note that to do this we convert all upper bounds (i.e. constraints in the form c<sub>1</sub>X<sub>1</sub> + c<sub>2</sub>X<sub>2</sub> &geq; K), to lower bounds (i.e. constraints in the form c<sub>1</sub>X<sub>1</sub> + c<sub>2</sub>X<sub>2</sub> &leq; K) and we convert minimization problems to maximization problems by multiplying the objective function through by -1. <br></text>
          <span id="canonicalModel" class="container" style="text-align: left; width: 600px; height: 100%;">
@@ -264,7 +267,7 @@
       };
       //       the variables in canonical form may be x1Prime and/or x2prime
       //       but we keep the x1, x2 names to reuse the ploting function, which
-      //       is in terms of x1, x2. See function calculateCanonicalForm.
+      //       is in terms of x1, x2. See function calculateCanonicalForm.  
       var linearModelCanonicalInequality = {
           objectiveFunction: {x1: 1, x2: 1, objective: "Maximize"},
           constraints: [],
@@ -275,11 +278,11 @@
       addConstraint({x1: 1, x2: 1, equality: "≤", constant: 1});
 
       var lpPlot = new Plot(d3.select("span#LPPlot"), linearModel);
-
+      
       var lpCanonicalPlot = new Plot(d3.select("span#LPCanonicalPlot"), linearModelCanonicalInequality);
       var advanceAlgorithm = function() {};
-
+      
       bindEventListeners();
-
+      
    </script>
 </html>
