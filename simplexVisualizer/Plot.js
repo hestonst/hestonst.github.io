@@ -197,7 +197,6 @@ function Plot(container, model) {
     }
     
     this.findFeasiblePoints =function() {
-        var tooltip = this.tooltip; //make pass by value into foreach 
 
         this.nonFeasiblePoints = [];
         this.feasiblePoints = [];
@@ -209,7 +208,7 @@ function Plot(container, model) {
 
     this.drawPoints = function(extrema) {
         //TODO: figure out how to refer to object attributes within loop
-        
+        var tooltip = this.tooltip; //make pass by value into foreach 
         yScale = d3.scaleLinear()
             .domain([extrema.yMin, extrema.yMax])
             .range([this.height - this.padding, this.padding]);

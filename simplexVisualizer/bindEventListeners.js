@@ -80,17 +80,20 @@ var addConstraint = function(constraint) {
         });
     
         x1RestrictionCoefficientInput.on("input", function(d, i) {
-            linearModel.constraints[n-1].x1 = checkOnInput(this);
+            var currentIndex = linearModel.constraints.indexOf(constraint);
+            linearModel.constraints[currentIndex].x1 = checkOnInput(this);
             recalculateModel();
         }).on("change",function() {checkOnChange(this);});
     
         x2RestrictionCoefficientInput.on("input", function(d, i) {
-            linearModel.constraints[n-1].x2 = checkOnInput(this);
+            var currentIndex = linearModel.constraints.indexOf(constraint);
+            linearModel.constraints[currentIndex].x2 = checkOnInput(this);
             recalculateModel();
         }).on("change",function() {checkOnChange(this);});
     
         constantRestrictionInput.on("input", function(d, i) {
-            linearModel.constraints[n-1].constant = checkOnInput(this);
+            var currentIndex = linearModel.constraints.indexOf(constraint);
+            linearModel.constraints[currentIndex].constant = checkOnInput(this);
             recalculateModel();
         }).on("change",function() {checkOnChange(this);});
 }
