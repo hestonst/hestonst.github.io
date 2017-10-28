@@ -8,9 +8,10 @@ var recalculateModel = function() {
 
 var populatePredefinedCase = function(modelType) {
     for (var contraint in linearModel.constraints) {
-        removeConstraint();
+        removeLastConstraint();
+        removeLastConstraint();//TODO: figure out why an extra is needed
     }
-    removeConstraint(); //TODO: figure out why an extra is needed
+    removeLastConstraint();
     linearModel.objectiveFunction.objective = "Maximize";
     if (modelType == "halfSpace") {
         addConstraint({x1: 1, x2: 1, equality: "≤", constant: 1});
@@ -34,6 +35,14 @@ var populatePredefinedCase = function(modelType) {
         addConstraint({x1: 1, x2: 1, equality: "≤", constant: 1});
         addConstraint({x1: 1, x2: 0, equality: "≥", constant: 0});
         linearModel.objectiveFunction.objective = "Minimize";
+    } else if (modelType == "yAxisFeasibleNoSolutionWithoutRoundingError") {
+        addConstraint({x1: 73, x2: 134, equality: "≥", constant: 1350});
+        addConstraint({x1: 73, x2: 150, equality: "≤", constant: 1600});
+        addConstraint({x1: 107, x2: 500, equality: "≥", constant: 5000});
+        addConstraint({x1: 1, x2: 0, equality: "≤", constant: 10});
+        addConstraint({x1: 0, x2: 1, equality: "≤", constant: 10});
+        addConstraint({x1: 1, x2: 0, equality: "≥", constant: 0});
+        addConstraint({x1: 0, x2: 1, equality: "≥", constant: 0});
     } 
     
     recalculateModel();

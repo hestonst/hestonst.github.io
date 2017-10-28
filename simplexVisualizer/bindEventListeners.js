@@ -19,35 +19,64 @@ var checkOnChange = function(input) {
 
 
 var addConstraint = function(constraint) {
-    linearModel.constraints.push(constraint);
     var n = linearModel.constraints.length;
     var container = d3.select("span#model>span.constraintContainer").append("span").attr("class","constraint")
         container.append("br");
-        container.append("text").text("Constraint " + n +":");
+        container.append("text").text("Constraint " + (n+1) +":");
         var x1RestrictionCoefficientInput = container.append("input").attr("type","number").attr("class","x1RestrictionCoefficient").attr("width","50").attr("value",constraint.x1);
         container.append("text").text("X").append("sub").text("1").append("text").text("+");
         var x2RestrictionCoefficientInput = container.append("input").attr("type","number").attr("class","x2RestrictionCoefficient").attr("width","50").attr("value",constraint.x2);
         container.append("text").text("X").append("sub").text("2");
         var g = container.append("span").attr("style","display:inline-block;position:relative;width:31px;").append("g").attr("transform","translate(1,1)");
-        var svg = g.append("svg").attr("class", "button equality").attr("style","width: 31; height: 31; margin: 0; position:absolute; top:-21px;");
-        svg.append("rect").attr("class","button").attr("width","30").attr("height","30");
-        svg.append("text").attr("class","button").text(constraint.equality);
+        var equalitySVG = g.append("svg")
+            .attr("class", "button equality")
+            .attr("style","width: 31; height: 31; margin: 0; position:absolute; top:-21px;");
+        equalitySVG.append("rect").attr("class","button").attr("width","30").attr("height","30");
+        equalitySVG.append("text").attr("class","button").text(constraint.equality);
         var constantRestrictionInput = container.append("input").attr("type","number").attr("class","constantRestriction").attr("width","50").attr("value",constraint.constant);
-        svg.on('click', function(d, i) {
-            var text = d3.select(this).select('text');
+    
+        //draw remove Constraint button:
+        var g = container.append("span").attr("style","display:inline-block;position:relative;width:31px;").append("g").attr("transform","translate(1,1)");
+        var removeSVG = g.append("svg").attr("class", "button remove").attr("style","width: 91; height: 31; margin: 0; position:absolute; top:-21px;");
+        removeSVG.append("rect").attr("class","button").attr("width","90").attr("height","30");
+        removeSVG.append("text").attr("class","button").text("Remove");
+        constraint.inputReference = container;
+        linearModel.constraints.push(constraint);
+    
+    
+    
+        //bind event listeners: 
+        equalitySVG.on('click', function(d, i) {
+            var currentIndex = linearModel.constraints.indexOf(constraint);
+            var text = linearModel.constraints[currentIndex].inputReference.select("svg.equality").select('text');
             if (text.text() == "≤") {
                 text.text("≥");
-                linearModel.constraints[n-1].equality = "≥";
+                linearModel.constraints[currentIndex].equality = "≥";
                 recalculateModel();
             } else if (text.text() == "≥") {
                 text.text("=");
-                linearModel.constraints[n-1].equality = "=";
+                linearModel.constraints[currentIndex].equality = "=";
                 recalculateModel();
             } else {
                 text.text("≤");
-                linearModel.constraints[n-1].equality = "≤";
+                linearModel.constraints[currentIndex].equality = "≤";
                 recalculateModel();
             }
+        });
+    
+        //bind event listeners: 
+        removeSVG.on('click', function(d, i) {
+            var currentIndex = linearModel.constraints.indexOf(constraint);
+            linearModel.constraints[currentIndex].inputReference.remove();
+            linearModel.constraints.splice(currentIndex, 1);
+            //relabel constraints:
+            var i = 0;
+            console.log(currentIndex);
+            console.log(linearModel.constraints.length);
+            for (;currentIndex < linearModel.constraints.length; currentIndex++) {
+                linearModel.constraints[currentIndex].inputReference.select("text").text("Constraint " + (currentIndex+1) + ":");
+            }
+            recalculateModel();
         });
     
         x1RestrictionCoefficientInput.on("input", function(d, i) {
@@ -67,7 +96,7 @@ var addConstraint = function(constraint) {
 }
 
 
-var removeConstraint = function() {
+var removeLastConstraint = function() {
     d3.selectAll("span#model").selectAll("span.constraint").filter(function(d, i,list) {
         return i === list.length - 1;
     }).remove();
@@ -94,9 +123,23 @@ var bindEventListeners = function() {
 
 
 
-    LPContainer.select("svg.button#removeConstraint").on('click', function() {removeConstraint();});
+//    LPContainer.select("svg.button#removeConstraint").on('click', function() {removeConstraint();});
     
-   d3.select("span#model").select("svg.button#addConstraint").on('click', function() {addConstraint({x1:1,x2:1, equality:"≤", constant:1}); recalculateModel();});
+   d3.select("span#model").select("svg.button#addConstraint").on('click', function() {addConstraint({x1:1,x2:1, equality:"≤", constant:1, inputReference: 0}); recalculateModel();});
+    
+   d3.select("span#model").select("svg.button#zoomOnFeasibleSet").on('click', function() {
+       if (isZoomed) {
+           d3.select("span#model").select("svg.button#zoomOnFeasibleSet").select("text").text("Crop Plot to Feasible Set");
+           isZoomed = false; 
+       }
+       else {
+           d3.select("span#model").select("svg.button#zoomOnFeasibleSet").select("text").text("Show All Basic Solutions");
+           isZoomed = true;
+       } 
+       
+       recalculateModel();
+   });
+    
     
     // objective function inputs:
     LPContainer.select("input.x1ObjectiveCoefficient").on("input", function() {

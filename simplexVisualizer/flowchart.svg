@@ -1,0 +1,196 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:1.41421;">
+    <g id="page0,1_graph0" transform="matrix(0.776157,0,0,0.776157,-2.89537,378.351)">
+        <g id="insertSlackVariables" transform="matrix(1,0,0,1,-39.0994,-60.7414)">
+            <g transform="matrix(1,0,0,1,-219.669,61.1099)">
+                <rect x="475.5" y="-463" width="112" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,260.954,-381.058)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Insert Slack Variables</text>
+            </g>
+        </g>
+        <g id="edge1" transform="matrix(1,0,0,1,-319.281,25.1599)">
+            <g transform="matrix(5.80932e-05,-1,3.05405,0.00017742,1971.18,62.6586)">
+                <path d="M531.5,-487.698C531.5,-483.235 531.5,-478.354 531.5,-473.538" style="fill:none;stroke-width:0.45px;stroke:black;"/>
+            </g>
+            <g transform="matrix(-0.00751655,-0.999972,0.999972,-0.00751655,1003.77,59.6761)">
+                <path d="M535,-473.289L531.5,-463.289L528,-473.289L535,-473.289Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            </g>
+        </g>
+        <g id="start" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <g transform="matrix(1,0,0,1,-405.27,122.397)">
+                <ellipse cx="531.5" cy="-506" rx="74.343" ry="18" style="fill:none;stroke-width:1px;stroke:black;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,68.3588,-380.802)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Start Simplex Algorithm</text>
+            </g>
+        </g>
+        <g id="edge11" transform="matrix(1,0,0,1,-154.519,24.616)">
+            <g transform="matrix(5.80932e-05,-1,3.56115,0.000206878,2218.49,62.673)">
+                <path d="M531.5,-487.698C531.5,-483.235 531.5,-478.354 531.5,-473.538" style="fill:none;stroke-width:0.45px;stroke:black;"/>
+            </g>
+            <g transform="matrix(-0.00751655,-0.999972,0.999972,-0.00751655,1010.18,59.6761)">
+                <path d="M535,-473.289L531.5,-463.289L528,-473.289L535,-473.289Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            </g>
+        </g>
+        <g id="edge3" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M531.5,-365.698C531.5,-361.235 531.5,-356.354 531.5,-351.538" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            <path d="M535,-351.289L531.5,-341.289L528,-351.289L535,-351.289Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+        </g>
+        <g id="edge4" transform="matrix(0.960898,0,0,1.065,-37.7083,-47.5256)">
+            <g transform="matrix(0.844399,0,0,0.301375,79.2652,-220.653)">
+                <path d="M506.44,-315.012C484.203,-307.443 451.197,-295.017 424.5,-280C361.67,-244.659 295.937,-190.901 261.623,-161.339" style="fill:none;stroke-width:1.57px;stroke:black;"/>
+            </g>
+            <g transform="matrix(0.942084,0.302593,-0.371711,0.942084,-7.5042,-195.626)">
+                <path d="M263.84,-158.629L253.994,-154.717L259.252,-163.915L263.84,-158.629Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,381.302,-300.456)">
+                <text x="3.296px" y="0px" style="font-family:'LucidaGrande-Bold';font-size:10px;fill:black;">Yes</text>
+            </g>
+        </g>
+        <g id="edge7" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M531.5,-304.698C531.5,-300.235 531.5,-295.354 531.5,-290.538" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <path d="M535,-290.289L531.5,-280.289L528,-290.289L535,-290.289Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,512.5,-296.799)">
+                <text x="3.296px" y="0px" style="font-family:'LucidaGrande-Bold';font-size:10px;fill:black;">No</text>
+            </g>
+        </g>
+        <g id="edge6" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <g transform="matrix(0.64152,0,0,2.48881,105.322,82.6904)">
+                <path d="M207.076,-128.953C185.265,-121.034 155.182,-110.111 128.708,-100.498" style="fill:none;stroke-width:0.53px;stroke:black;"/>
+            </g>
+            <g transform="matrix(0.769039,-0.639202,0.639202,0.769039,153.275,-8.33448)">
+                <path d="M129.734,-97.147L119.139,-97.024L127.344,-103.727L129.734,-97.147Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,186.979,-215.52)">
+                <text x="3.296px" y="0px" style="font-family:'LucidaGrande-Bold';font-size:10px;fill:black;">No</text>
+            </g>
+        </g>
+        <g id="GenerateInitialSolution" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <rect x="427" y="-402" width="209" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,430.441,-381.5)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Generate Initial Solution by Rule 1, Walker</text>
+            </g>
+        </g>
+        <g id="Optimal" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M531.5,-341L487.255,-323L531.5,-305L575.745,-323L531.5,-341Z" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,511.768,-320.48)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Optimal</text>
+            </g>
+        </g>
+        <g id="edge5" transform="matrix(1,0,0,1,12.7644,-187.151)">
+            <g transform="matrix(0.670911,-0.741538,1.38706,1.25496,239.487,212.012)">
+                <path d="M237.5,-121.998C237.5,-101.996 237.5,-69.443 237.5,-46.083" style="fill:none;stroke-width:0.64px;stroke:black;"/>
+            </g>
+            <g transform="matrix(0.637698,-0.770287,0.770287,0.637698,219.963,190.541)">
+                <path d="M241,-46.075L237.5,-36.075L234,-46.075L241,-46.075Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,262.66,-92.0345)">
+                <text x="3.296px" y="0px" style="font-family:'LucidaGrande-Bold';font-size:10px;fill:black;">Yes</text>
+            </g>
+        </g>
+        <g id="Unique" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <g transform="matrix(1,0,0,1,13.059,-116.401)">
+                <path d="M237.5,-158L159.49,-140L237.5,-122L315.51,-140L237.5,-158Z" style="fill:none;stroke-width:1px;stroke:black;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,211.559,-253.901)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Unique by Rule 6</text>
+            </g>
+        </g>
+        <g id="edge15" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <g transform="matrix(0.581467,0.685393,-0.680159,0.577027,83.9819,-167.722)">
+                <path d="M119.451,-60.863C146.824,-50.924 180.004,-38.877 204.208,-30.088" style="fill:none;stroke-width:1.08px;stroke:black;"/>
+            </g>
+            <g transform="matrix(0.644005,0.765021,-0.765021,0.644005,68.5044,-181.586)">
+                <path d="M205.457,-33.358L213.662,-26.655L203.068,-26.779L205.457,-33.358Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            </g>
+        </g>
+        <g id="chooseTheEnteringVariable" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <rect x="457" y="-280" width="149" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,461.841,-259.5)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Choose the Entering Variable</text>
+            </g>
+        </g>
+        <g id="edge8" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M531.5,-243.698C531.5,-239.235 531.5,-234.354 531.5,-229.538" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            <path d="M535,-229.289L531.5,-219.289L528,-229.289L535,-229.289Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+        </g>
+        <g id="determineOtherSolutions" transform="matrix(1,0,0,1,73.6743,-121.104)">
+            <rect x="0" y="-97" width="139" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,5.68114,-76.6691)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Determine Other Solutions</text>
+            </g>
+        </g>
+        <g id="edge9" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M531.5,-182.698C531.5,-178.235 531.5,-173.354 531.5,-168.538" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            <path d="M535,-168.289L531.5,-158.289L528,-168.289L535,-168.289Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+        </g>
+        <g id="stop" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <ellipse cx="237.5" cy="-18" rx="27" ry="18" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,227,-15.5)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Stop</text>
+            </g>
+        </g>
+        <g id="edge10" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M548.578,-123.973C554.986,-117.959 562.436,-110.967 569.525,-104.315" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            <path d="M572.112,-106.687L577.009,-97.292L567.322,-101.583L572.112,-106.687Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(-0.671585,-0.740927,0.740927,-0.671585,1184.87,183.834)">
+                <path d="M572.112,-106.687L577.009,-97.292L567.322,-101.583L572.112,-106.687Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,535.816,-110.611)">
+                <text x="3.296px" y="0px" style="font-family:'LucidaGrande-Bold';font-size:10px;fill:black;">Yes</text>
+            </g>
+        </g>
+        <g id="node8" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <rect x="443" y="-219" width="177" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,447.48,-199.028)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Determine Replacement Quantities</text>
+            </g>
+        </g>
+        <g id="edge13" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M499.505,-126.158C482.398,-118.757 460.927,-109.468 441.574,-101.096" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            <path d="M442.84,-97.83L432.273,-97.072L440.061,-104.255L442.84,-97.83Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,447.243,-115.768)">
+                <text x="3.296px" y="0px" style="font-family:'LucidaGrande-Bold';font-size:10px;fill:black;">No</text>
+            </g>
+        </g>
+        <g id="replacementQuantitiesFound" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M531.5,-158L394.942,-140L531.5,-122L668.058,-140L531.5,-158Z" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,455.895,-137.869)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Replacement Quantities Found?</text>
+            </g>
+        </g>
+        <g id="edge12" transform="matrix(0.897045,0,0,1.16119,36.2123,-16.5506)">
+            <path d="M719.103,-225.968C719.103,-272.654 637.562,-293.661 568.283,-313.203" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            <path d="M567.317,-309.839L558.621,-315.892L569.194,-316.583L567.317,-309.839Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+        </g>
+        <g transform="matrix(-0.00135249,0.618948,-0.801203,-0.00175075,464.31,-586.653)">
+            <g id="edge121">
+                <path d="M719.103,-225.968C719.103,-272.654 638.679,-276.923 571.473,-277.664" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            </g>
+        </g>
+        <g id="determineTheDepartingVariable" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <rect x="511" y="-97" width="171" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,518,-76.5)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Determine the Departing Variable</text>
+            </g>
+        </g>
+        <g id="edge14" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <path d="M345.009,-60.863C321.024,-51.3 292.142,-39.786 270.357,-31.1" style="fill:none;stroke-width:0.97px;stroke:black;"/>
+            <path d="M271.475,-27.778L260.89,-27.325L268.882,-34.28L271.475,-27.778Z" style="fill:black;fill-rule:nonzero;stroke-width:1px;stroke:black;"/>
+        </g>
+        <g id="solutionUnbounded" transform="matrix(1,0,0,1,-39.0994,-60.9971)">
+            <rect x="335.5" y="-97" width="110" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,342.5,-76.5)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Solution Unbounded</text>
+            </g>
+        </g>
+        <g id="obtainNextSolution" transform="matrix(1,0,0,1,-2.78669,-241.753)">
+            <rect x="606.5" y="-36" width="164" height="36" style="fill:none;stroke-width:1px;stroke:black;"/>
+            <g transform="matrix(1,0,0,1,610.065,-15.5)">
+                <text x="0px" y="0px" style="font-family:'LucidaGrande';font-size:10px;fill:black;">Obtain Next Solution by Pivoting</text>
+            </g>
+        </g>
+    </g>
+</svg>

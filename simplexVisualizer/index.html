@@ -15,23 +15,16 @@
    <body>
       <div class="container">
          <h1>Visualizing Linear Programming Models</h1>
-<!--
-         This page steps through the process needed to set up and run Dantzig's simplex method to solve linear optimization problems, illustrating each step with graphical examples. It then compares the efficiency of your own computer solving the given problem graphically and with the simplex method. Start by entering an optimization problem, or choose an example that demonstrates <a  onclick="populatePredefinedCase('canonicalInequalityForm')"  href="#">the simplex method on a linear problem in canonical inequality form,</a> <a onclick="populatePredefinedCase('lowerBound')"  href="#">the simplex method on a linear problem with multivariable contraints with a lower bound,</a> <a onclick="populatePredefinedCase('noFeasibleSet')"  href="#">the simplex method with no feasible set,</a> <a onclick="populatePredefinedCase('unboundedFeasibleSetAndSolution')" href="#">the simplex method with an unbounded feasible set and a solution,</a> or <a onclick="populatePredefinedCase('unboundedFeasibleSetAndNoSolution')" href="#">the simplex method with an unbounded feasible set and no solution.</a>
--->
+
           <text>Hello ISyE 3833 Scholars, <br> This page is an initial trial of an interactive webpage that can demonstrate concepts of linear programming that are on the practice tests uploaded to T-Square. The idea is for you to load each example by clicking on the links below, and play around with the resulting plots so that you can have a more interactive experience with the concepts. If you like (or dislike) this site, please fill out </text><a href="https://goo.gl/forms/VJ2ic1KC7cZOiVb02">this survey</a><text>, and it will help me better understand how I can make more pages like this in the future. --Your Classmate</text><br><br> 
           <text>Examples and Comprehension Questions:<br> </text> 
           
           <a onclick="populatePredefinedCase('halfSpace')" href="#">Example 1: a single half-space</a><text>: the first principle from which all LPs in canonical inequality form are built! Try moving this around the plot to get comfortable with the graphical representation of a constraint.<br> Question 1: Can we have any basic solutions with only one half-space plotted? <br> <br>
-          
-<!--          Question 2: Is there an upper bound to the number of basic solutions we can have? (Hint: think of how constraints can intersect.) TODO: THINK ABOUT IF THIS WORKS WITH GAUSSIAN REDUC <br>-->
-
-<!--          Question 2: Is there an upper bound to the number of basic solutions we can have? (Hint: think of how constraints can intersect.) TODO: THINK ABOUT IF THIS WORKS WITH GAUSSIAN REDUC <br>-->
-          
           <a onclick="populatePredefinedCase('simpleExample')" href="#">Example 2: a minimal example of a LP in canonical inequality form</a><text>
           <br>Question 2: Can we have a LP in canonical inequality form with an unbounded feasible set?
           <br>Question 3: Can an optimal iteration of the objective function ever bisect the feasible set (Hint: can the blue line ever go through the green region)?
           <br>Question 4: Can we have a non-basic optimal feasible solution? <br><br>
-          <a onclick="populatePredefinedCase('unboundedFeasibleSetAndSolution')" href="#">Example 3: a LP with an unbounded feasible set and a unique optimal solution,</a>
+          <a onclick="populatePredefinedCase('unboundedFeasibleSetAndSolution')" href="#">Example 3: a LP with an unbounded feasible set and a finite unique optimal solution,</a>
           <text><br>
               Question 5: Can we have an unbounded feasible set with a finite optimal solution?
               <br>Question 6: What condition is necessary to be able to plot an optimal iteration of the objective function if there is an unbounded solution set?<br>
@@ -67,13 +60,13 @@
                <!--svg for equal spacing-->
             </svg>
             <g id="addConstraintButton" class="button">
-               <svg class="button" id="addConstraint" style="width: 31; height: 31; margin: 0;" >
-                  <rect class="button" width="30" height="30" />
-                  <text class="button">+</text>
+               <svg class="button" id="addConstraint" style="width: 146; height: 31; margin: 0;" >
+                  <rect class="button" width="145" height="30" />
+                  <text class="button">Add Constraint</text>
                </svg>
-               <svg class="button" id="removeConstraint" style="width: 31; height: 31; margin: 0;" >
-                  <rect class="button" width="30" height="30" />
-                  <text class="button">-</text>
+               <svg class="button" id="zoomOnFeasibleSet" style="width: 236; height: 31; margin: 0;" >
+                  <rect class="button" width="235" height="30" />
+                  <text class="button">Crop Plot To Feasible Set</text>
                </svg>
             </g>
          </span>
@@ -86,11 +79,6 @@
        
        <text> Answers to questions: 
             <br> Question 1: Can we have any basic solutions with only one half-space plotted? No, we cannot. Basic solutions are where constraints intersect in the space spanned by our decision variables. If there is only one constraint, there cannot be any intersections because one line cannot intersect with itself. <br>
-<!--
-           
-           <br> Question 2: Is there an upper bound to the number of basic solutions we can have? Tricky question! No, there is not; but if all the constraints are distinct, there is. Consider how two lines can intersect: they can either be distinct lines with non-equal slopes and intersect at exactly one point, or be the same line and intersect at all points. In the case that all constraints are distinct, the number of basic solutions is bound by the number of constraints.<br>
-           
--->
            <br> Question 2: Can we have a LP in canonical inequality form with an unbounded feasible set? We can! Make the coefficients on a variable in the first constraint negative. <br>
            
            <br> Question 3: Can an optimal iteration of the objective function ever bisect the feasible set (Hint: can the blue line ever go through the green region)? No, it can't. This is a result of the proof given in lecture that any optimal solution must lie on the border of the feasible set. Formally, we can say that because the derivative of each binding constraint with respect to each variable in the objective function is a constant and therefore monotonic, any reduction in slack (i.e. move towards the border of the feasible region) will result in the same vector of change in the objective value. If you want some fun, try to make the optimal iteration of the objective function spin around the feasible set by adjusting the objective function values.<br>
@@ -106,168 +94,14 @@
            
           </text>
        
-<!--
-      <text>Your computer is able to graph and solve your linear optimization problem (LP) just as you've entered it above by testing all the intersection points and regions on the plot individually. It can do this because it's a fairly simple problem with only two variables involved. In order for computers to solve much more complicated systems of linear equations--like those tipically found in industry--we need a more efficient method. This is why we use Dantzig's simplex method to "optimize" the process of finding the optimal solution! In general, mathematical programming can be described as a collection of techniques to help computers solve problems that are too costly to compare each individual possibility to find an optimal solution. To better understand Dantzig's method, we'll continue with the same LP in two dimensions, visualizing each step with a graph. Later, we'll examine how long it takes your computer to solve your LP using both the graphical method and the simplex method. 
-      <div class="container">
-          <br><text>The linear model that you've entered requires a conversion to canonical inequality form. This is because the simplex method can only be used on linear optimization problems with positive values and a fully bounded feasible region. All linear problems can be converted to such a form, called its canonical inequality form. Note that to do this we convert all upper bounds (i.e. constraints in the form c<sub>1</sub>X<sub>1</sub> + c<sub>2</sub>X<sub>2</sub> &geq; K), to lower bounds (i.e. constraints in the form c<sub>1</sub>X<sub>1</sub> + c<sub>2</sub>X<sub>2</sub> &leq; K) and we convert minimization problems to maximization problems by multiplying the objective function through by -1. <br></text>
-         <span id="canonicalModel" class="container" style="text-align: left; width: 600px; height: 100%;">
-            <span id="decisionVarsContainer">
-               <text class = "title">LP in Canonical Inequality Form:</text>
-               <br>
-               <text>Decision Variables: X<sub>1</sub>, X<sub>2</sub></text>
-               <br>
-            </span>
-            <span class="hidden" id="bookKeepingVarsContainer">
-               <text class="bookKeepingVarsX1">Book-Keeping Variables: </text>
-               <span class="x1">
-                  <text>
-                      X<sub>1</sub> = </text>
-                  <text class="bookKeepingVarsX1"> X<sup class="x1">'</sup><sub>1</sub> </text>
-                  <span id="x1PrimeIsInExcessOfx1By">
-                     <text></text>
-                  </span>
-               </span>
-               <span class="comma hidden">
-                  <text>,</text>
-               </span>
-               <span class="x2">
-                  <text>
-                      X<sub>2</sub> = </text>
-                  <text class="bookKeepingVarsX2"> X<sup class="x2">'</sup><sub>2</sub> </text>
-                  <span id="x2PrimeIsInExcessOfx2By">
-                     <text></text>
-                  </span>
-               </span>
-
-               <br>
-            </span>
-            <span id="objectiveFunctionContainer">
-               <text>Objective Function:</text>
-               <text>Maximize (</text>
-               <span class="x1ObjectiveVariable">
-                  <text class="x1ObjectiveCoefficient" width="50">1</text>
-                  <text class="x1ObjectiveVariable">X<sub>1</sub></text>
-               </span>
-               <span class=plus>
-                  <text>+</text>
-               </span>
-               <span class="x2ObjectiveVariable">
-                  <text class="x2ObjectiveCoefficient" >1</text>
-                  <text class="x2ObjectiveVariable">X<sub>2</sub></text>
-               </span>
-               <text>)</text>
-            </span>
-            <span id="constraintContainer">
-               <span class="constraint">
-                  <br>
-                  <text>Constraint 1:</text>
-                  <span class="x1">
-                     <span class="x1RestrictionCoefficient">
-                        <text type="text" class="x1RestrictionCoefficient" width="50"></text>
-                     </span>
-                     <text class="x1RestrictionVariable">X<sup class="x1"></sup><sub>1</sub></text>
-                  </span>
-                  <span class="plus">
-                     <text type="text">+</text>
-                  </span>
-                  <span class="x2">
-                     <span class="x2RestrictionCoefficient">
-                        <text type="text">1</text>
-                     </span>
-                     <text class="x2RestrictionVariable">X<sup class="x2"></sup><sub>2</sub> </text>
-                  </span>
-                  <text class="equality">≤</text>
-                  <text> </text>
-                  <text type="text" class="constantRestriction" >1</text>
-               </span>
-               <span class="constraint">
-                  <br>
-                  <text>Constraint 2:</text>
-                  <span class="x1">
-                     <span class="x1RestrictionCoefficient">
-                        <text type="text" class="x1RestrictionCoefficient" width="50"></text>
-                     </span>
-                     <text class="x1RestrictionVariable">X<sup class="x1"></sup><sub>1</sub></text>
-                  </span>
-                  <span class="plus hidden">
-                     <text type="text">+</text>
-                  </span>
-                  <span class="x1 hidden">
-                     <span class="x2RestrictionCoefficient">
-                        <text type="text">0</text>
-                     </span>
-                     <text class="x2RestrictionVariable">X<sup class="x2"></sup><sub>2</sub> </text>
-                  </span>
-                  <text class="equality">≥</text>
-                  <text> </text>
-                  <text type="text" class="constantRestriction" >0</text>
-               </span>
-               <span class="constraint">
-                  <br>
-                  <text>Constraint 3:</text>
-                  <span class="x1 hidden">
-                     <span class="x1RestrictionCoefficient">
-                        <text type="text" class="x1RestrictionCoefficient" width="50"></text>
-                     </span>
-                     <text class="x1RestrictionVariable">X<sup class="x1"></sup><sub>1</sub></text>
-                  </span>
-                  <span class="plus hidden">
-                     <text type="text">+</text>
-                  </span>
-                  <span class="x2">
-                     <span class="x2RestrictionCoefficient hidden">
-                        <text type="text">1</text>
-                     </span>
-                     <text class="x2RestrictionVariable">X<sup class="x2"></sup><sub>2</sub> </text>
-                  </span>
-                  <text class="equality">≥</text>
-                  <text> </text>
-                  <text type="text" class="constantRestriction" >0</text>
-               </span>
-               <svg style="width: 30; height: 30; margin: 0;"></svg>
-               <svg id="modelButtons" width="251px" height = "30px" transform="matrix(1 0 0 1 0 0)"  >
-                  <rect class="button" width="250" height="30" />
-                  <text class="button">Convert to Canonical Form</text>
-               </svg>
-               <p></p>
-            </span>
-         </span>
-         <span id="LPCanonicalPlot" class="container" style="position: relative;width: 600px; height: 100%;"></span>
-      </div>
-      <div class="container">
-         <span id="flowchart" class="container" style="width: 600px; height: 400px;">
-            <svg id="flowchart" width="100%" height = "100%">
-               <g id="startAlgoButton" transform="matrix(1 0 0 1 25 357)" class="button" onmouseup="buttonClick(evt)">
-                  <rect class="button" width="200" height="30"/>
-                  <text class="button" >Start/Reset Algorithm</text>
-               </g>
-               <g id="stepBackAlgoButton" class="button" transform="matrix(1 0 0 1 235 357)" onmouseup="buttonClick(evt)">
-                  <rect class="button" width="130" height="30" />
-                  <text class="button">Step Forward</text>
-               </g>
-               <g id="stepForwardAlgoButton" class="button" transform="matrix(1 0 0 1 375 357)" onmouseup="buttonClick(evt)">
-                  <rect class="button" width="100" height="30" />
-                  <text class="button" >Step Back</text>
-               </g>
-            </svg>
-         </span>
-      </div>
--->
    </body>
    <script>
-//      load and tag flowchart SVG:
-//      d3.xml("flowchart.svg").get(function(error, svgXML) {
-//          if (error) console.log(error);
-//          d3.select("svg#flowchart").node().appendChild(svgXML.documentElement);
-//      });
+      var isZoomed = false;
       var linearModel = {
           objectiveFunction: {x1: 1, x2: 1, objective: "Maximize"},
           constraints: [],
           isCanonicalInequality: true
       };
-      //       the variables in canonical form may be x1Prime and/or x2prime
-      //       but we keep the x1, x2 names to reuse the ploting function, which
-      //       is in terms of x1, x2. See function calculateCanonicalForm.  
       var linearModelCanonicalInequality = {
           objectiveFunction: {x1: 1, x2: 1, objective: "Maximize"},
           constraints: [],
