@@ -5,7 +5,6 @@ var recalculateModel = function() {
 //    prettyPrintCanonicalForm();
 }
 
-
 var populatePredefinedCase = function(modelType) {
     for (var contraint in linearModel.constraints) {
         removeLastConstraint();
@@ -44,18 +43,7 @@ var populatePredefinedCase = function(modelType) {
         addConstraint({x1: 1, x2: 0, equality: "≥", constant: 0});
         addConstraint({x1: 0, x2: 1, equality: "≥", constant: 0});
     } 
-    
     recalculateModel();
-}
-
-//additional non-class isFeasible for use in functional reduce 
-isFeasible = function(point, constraints) {
-    for(var constraint of constraints) {
-        if (constraint.equality == "≤" && ((constraint.x1*point.x + constraint.x2*point.y) > constraint.constant)) return false;
-        if (constraint.equality == "≥" && ((constraint.x1*point.x + constraint.x2*point.y) < constraint.constant)) return false;
-        if (constraint.equality == "=" && ((constraint.x1*point.x + constraint.x2*point.y) != constraint.constant)) return false;
-    }
-    return true;
 }
 
 var checkIfInCanonicalInequalityForm = function() {
@@ -68,7 +56,6 @@ var checkIfInCanonicalInequalityForm = function() {
     if (linearModel.objectiveFunction.objective == "Minimize") return false;
     return true;
 }
-
 
 var prettyPrintCanonicalForm = function() { 
     //print objective function:
@@ -150,7 +137,6 @@ var prettyPrintCanonicalForm = function() {
     }
 }
 
-
 //returns NaN if singular
 var invertTwoByTwoMatrix = function(A) {
     if (A.length != 2) throw error;
@@ -166,9 +152,6 @@ var invertTwoByTwoMatrix = function(A) {
     return invA;
 }
 
-//we cannot call these basic solutions, because we 
-//may experience reduced rank (parallel constraints)
-//iff we do not force non-neg constraints (horizontal and verticle constraints)
 var findAllIntersections = function(constraints) {
     var A = []; //A[row][col] 
     var b = [];
@@ -202,17 +185,6 @@ var findAllIntersections = function(constraints) {
     return x;
 }
 
-//TODO:decide if midpoints are necessary (iff we can form concave feasible regions)
-var findMidpoint = function(point1, point2) {
-    var midpoint = {x:0,y:0};
-    midpoint.x = (point1.x + point2.x)/2;
-    midpoint.y = (point1.y + point2.y)/2;
-    return midpoint;
-}
-
-//test a point to see if it violates a constraint
-
-
 var deepCopyModel = function(model) {
     
     var constraints = [];
@@ -230,12 +202,9 @@ var deepCopyModel = function(model) {
     return {objectiveFunction: {x1: x1, x2: x2, objective: objective}, constraints: constraints};
 }
 
-
 var calculateCanonicalForm = function() {
-    
-    //TODO: combine with first plot to find intersections only once
-    linearModelCanonical = deepCopyModel(linearModel);
-    S = findAllIntersections(linearModelCanonical.constraints);
+    model = deepCopyModel(this.model);
+    S = findAllIntersections(model);
     var minX = d3.min(S, function(d) { return d.x});
     var minY = d3.min(S, function(d) { return d.y});
     
@@ -245,7 +214,6 @@ var calculateCanonicalForm = function() {
         linearModelCanonical.objectiveFunction.x1 *= (-1);
         linearModelCanonical.objectiveFunction.x2 *= (-1);
     }
-    
     
     //Step 2: choose book-keeping variables so that model is anchored at origin
     //calculate x1Prime's offset from x1:

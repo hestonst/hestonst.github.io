@@ -5,7 +5,7 @@ function Plot(container, model) {
     this.width = 600;
     this.height = 400;
     this.padding = 75; 
-    //todo: make square, better plot 
+    //TODO: make square 
     this.model = model;
     this.shadedTriangles = 0;
     this.plotPadding = 0.2; //percentage
@@ -68,7 +68,7 @@ function Plot(container, model) {
         
     }
     
-     this.shadeFeasibleSet = function(intersections, extrema) {
+    this.shadeFeasibleSet = function(intersections, extrema) {
         var yScale = d3.scaleLinear()
             .domain([extrema.yMin, extrema.yMax])
             .range([this.height - this.padding, this.padding]);
@@ -114,7 +114,7 @@ function Plot(container, model) {
             var lineSegmentsToShade = [];
             for (var i = 0; i < intersections.length; i++) {
                 for (var j = i + 1; j < intersections.length; j++) {
-                    if (this.isFeasibleWithRoundingError(findMidpoint(intersections[i], intersections[j])) && this.isFeasibleWithRoundingError(intersections[i]) && this.isFeasibleWithRoundingError(intersections[j])) {
+                    if (this.isFeasibleWithRoundingError(intersections[i]) && this. isFeasibleWithRoundingError(intersections[j])) {
                         lineSegmentsToShade.push([intersections[i], intersections[j]]);
                     }
                 }
@@ -142,7 +142,6 @@ function Plot(container, model) {
         //will be graphed by drawPoints method
 
     }
-
 
     this.findFeasibleSet = function() {
 
@@ -197,7 +196,6 @@ function Plot(container, model) {
     }
     
     this.findFeasiblePoints =function() {
-
         this.nonFeasiblePoints = [];
         this.feasiblePoints = [];
         for (var i = 0; i < this.S.length; i++) {
@@ -452,9 +450,8 @@ function Plot(container, model) {
         return false;
     }
     
-    this.drawSolution = function(extrema) {
+    this.drawSolution = function(extrema, contConstant) {
         this.findSolution();
-        if (isNaN(this.optimalValue)) return NaN; //there is no solution to draw
         if (isNaN(this.xMax)) return NaN; //there are no constraints loaded
         
         yScale = d3.scaleLinear()
@@ -468,11 +465,11 @@ function Plot(container, model) {
         //        Case 1: optimal solution is a slanted line
         if (this.model.objectiveFunction.x1 != 0 && this.model.objectiveFunction.x2 != 0) {
             var line = [{
-                    x: ((this.optimalValue - this.model.objectiveFunction.x2 * extrema.yMin) / this.model.objectiveFunction.x1),
+                    x: ((contConstant - this.model.objectiveFunction.x2 * extrema.yMin) / this.model.objectiveFunction.x1),
                     y: extrema.yMin
                 },
                 {
-                    x: ((this.optimalValue - this.model.objectiveFunction.x2 * extrema.yMax) / this.model.objectiveFunction.x1),
+                    x: ((contConstant - this.model.objectiveFunction.x2 * extrema.yMax) / this.model.objectiveFunction.x1),
                     y: extrema.yMax
                 }
             ];
@@ -481,22 +478,22 @@ function Plot(container, model) {
         else if (this.model.objectiveFunction.x1 == 0 && this.model.objectiveFunction.x2 != 0) {
             var line = [{
                     x: extrema.xMin,
-                    y: this.optimalSolution.y
+                    y: (contConstant/this.model.objectiveFunction.x2)
                 },
                 {
                     x: extrema.xMax,
-                    y: this.optimalSolution.y
+                    y: (contConstant/this.model.objectiveFunction.x2)
                 }
             ];
         }
         //       Case 2: optimal solution is a horizontal line
         else if (this.model.objectiveFunction.x1 != 0 && this.model.objectiveFunction.x2 == 0) {
             var line = [{
-                    x: this.optimalSolution.x,
+                    x: (contConstant/this.model.objectiveFunction.x1),
                     y: extrema.yMax
                 },
                 {
-                    x: this.optimalSolution.x,
+                    x: (contConstant/this.model.objectiveFunction.x1),
                     y: extrema.yMin
                 }
             ];
@@ -506,9 +503,6 @@ function Plot(container, model) {
             return;
         }
 
-        if (this.doesOptimalLineBisectFeasibleSet()) { //don't draw optimal line if intersects with unbounded LP
-            line = [];
-        }
 
         
         var lineFunction = d3.line()
@@ -521,9 +515,13 @@ function Plot(container, model) {
             });
         var linePlot = this.gZoom.append("path")
             .attr("d", lineFunction(line))
+            .attr("id", "solution")
             .attr("clip-path", "url(#clip)")
             .attr("class", "solution")
             .attr("stroke-width", 4);
+        if (contourConstant === this.optimalValue && !this.doesOptimalLineBisectFeasibleSet()) { 
+            d3.selectAll("path.solution").attr("class","optimalSolution");
+        }
     }
 
     this.shadeBounded = function() {
@@ -659,7 +657,6 @@ function Plot(container, model) {
 
     }
     
-    
     this.updatePlot = function(model) {
         this.model = model;
         this.S = findAllIntersections(this.model.constraints);
@@ -673,7 +670,8 @@ function Plot(container, model) {
             var yFeasibleMin = d3.min(this.feasiblePoints, function(d) {return d.y;});
             var yFeasibleMax = d3.max(this.feasiblePoints, function(d) {return d.y;});
             
-            var extrema = this.calculatePadding(xFeasibleMin, xFeasibleMax, yFeasibleMin, yFeasibleMax);
+            this.extrema = this.calculatePadding(xFeasibleMin, xFeasibleMax, yFeasibleMin, yFeasibleMax);
+            var extrema = this.extrema;
             var scaleFactor = Math.sqrt((this.xMax-this.xMin)/(extrema.xMax-extrema.xMin));
             var xScaleFactor = (this.xMax-this.xMin)/(extrema.xMax-extrema.xMin);
             var yScaleFactor = (this.yMax-this.yMin)/(extrema.yMax-extrema.yMin);
@@ -682,26 +680,106 @@ function Plot(container, model) {
                 this.drawConstraints(extrema);
                 this.shadeFeasibleSet(this.SwithBorders, extrema); 
                 this.drawPoints(extrema);
-                this.drawSolution(extrema);
+                this.drawSolution(extrema, contourConstant);
             } else {
-                var extrema = {xMin:this.xMin, xMax: this.xMax, yMin:this.yMin, yMax:this.yMax}
+                this.extrema = {xMin:this.xMin, xMax: this.xMax, yMin:this.yMin, yMax:this.yMax}
+                var extrema = this.extrema;
                 this.drawAxes(extrema);
                 this.drawConstraints(extrema);
                 this.shadeFeasibleSet(this.SwithBorders, extrema); 
                 this.drawPoints(extrema);
-                this.drawSolution(extrema);
+                this.drawSolution(extrema, contourConstant);
 
             }
         } else {
-            var extrema = {xMin:this.xMin, xMax: this.xMax, yMin:this.yMin, yMax:this.yMax}
+            this.extrema = {xMin:this.xMin, xMax: this.xMax, yMin:this.yMin, yMax:this.yMax};
+            var extrema = this.extrema;
             this.drawAxes(extrema);
             this.drawConstraints(extrema);
             this.shadeFeasibleSet(this.SwithBorders, extrema); 
             this.drawPoints(extrema);
-            this.drawSolution(extrema);
+            this.drawSolution(extrema, contourConstant);
         }
         this.shadeBounded();
-        this.drawSolution(extrema);
+        this.drawSolution(extrema, contourConstant);
+    }
+    
+    this.optimize = function() {
+        var extrema = this.extrema; //TODO delete this.extrema
+        //TODO: delete redundent code with drawSolution
+        this.findSolution();
+        if (isNaN(this.xMax)) return NaN; //there are no constraints loaded
+        
+        yScale = d3.scaleLinear()
+            .domain([extrema.yMin, extrema.yMax])
+            .range([this.height - this.padding, this.padding]);
+        xScale = d3.scaleLinear()
+            .domain([extrema.xMin, extrema.xMax])
+            .range([this.padding, this.width - this.padding]);
+
+
+        //        Case 1: optimal solution is a slanted line
+        if (this.model.objectiveFunction.x1 != 0 && this.model.objectiveFunction.x2 != 0) {
+            var line = [{
+                    x: ((this.optimalValue - this.model.objectiveFunction.x2 * extrema.yMin) / this.model.objectiveFunction.x1),
+                    y: extrema.yMin
+                },
+                {
+                    x: ((this.optimalValue - this.model.objectiveFunction.x2 * extrema.yMax) / this.model.objectiveFunction.x1),
+                    y: extrema.yMax
+                }
+            ];
+        }
+        //       Case 2: optimal solution is a verticle line
+        else if (this.model.objectiveFunction.x1 == 0 && this.model.objectiveFunction.x2 != 0) {
+            var line = [{
+                    x: extrema.xMin,
+                    y: this.optimalSolution.y
+                },
+                {
+                    x: extrema.xMax,
+                    y: this.optimalSolution.y
+                }
+            ];
+        }
+        //       Case 2: optimal solution is a horizontal line
+        else if (this.model.objectiveFunction.x1 != 0 && this.model.objectiveFunction.x2 == 0) {
+            var line = [{
+                    x: this.optimalSolution.x,
+                    y: extrema.yMax
+                },
+                {
+                    x: this.optimalSolution.x,
+                    y: extrema.yMin
+                }
+            ];
+        }
+        //       Case 3: there is no function to maximize
+        else if (this.model.objectiveFunction.x1 == 0 && this.model.objectiveFunction.x2 == 0) {
+            return;
+        }
+
+        if (!this.doesOptimalLineBisectFeasibleSet()) { 
+            //don't draw optimal line if intersects with unbounded LP
+            console.log(extrema);
+            var lineFunction = d3.line()
+                .x(function(d) {
+                    //returns NaN if line completely outside of window
+                    return xScale(d.x);
+                })
+                .y(function(d) {
+                    return yScale(d.y);
+                });
+            console.log(lineFunction(line));
+            var sol = d3.select("path#solution").attr("class", "optimalSolution");
+            sol.transition().attr("d", lineFunction(line));
+            if (!isNaN(this.optimalValue)) {
+                d3.select("div.container").select("input.contourConstant").property("value",this.optimalValue);
+                contourConstant = this.optimalValue;
+            }
+        }
+
+        d3.selectAll("path.solution").remove();
     }
 
     //draw initial plot: 

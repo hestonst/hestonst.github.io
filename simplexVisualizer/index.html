@@ -28,12 +28,13 @@
           <text><br>
               Question 5: Can we have an unbounded feasible set with a finite optimal solution?
               <br>Question 6: What condition is necessary to be able to plot an optimal iteration of the objective function if there is an unbounded solution set?<br>
+          <a onclick="populatePredefinedCase('yAxisFeasibleNoSolutionWithoutRoundingError')" href="#">Example 4: A more complicated example from lecture</a>
               
           
           
           </text>
          <br>
-         <span id="model" class="container" style="text-align: left; width: 600px; height: 100%;">
+         <span id="model" class="container" style="text-align: left; width: 650px; height: 100%;">
             <text style="pointer-events: all" class = "title">Provide Linear Optimization Problem:</text>
             <br>
             <text>Decision Variables: X<sub>1</sub>, X<sub>2</sub></text>
@@ -50,7 +51,8 @@
             <input type="number" class="x1ObjectiveCoefficient" width="50"value="1">
             <text>X<sub>1</sub>+</text>
             <input type="number" class="x2ObjectiveCoefficient" value="1">
-            <text>X<sub>2</sub> </text>
+            <text>X<sub>2</sub> = </text>
+            <input type="number" class="contourConstant" value="1">
             <!--            TODO:put SVG into g so that can't select text-->
             <span class="constraintContainer">
 
@@ -68,6 +70,10 @@
                   <rect class="button" width="235" height="30" />
                   <text class="button">Crop Plot To Feasible Set</text>
                </svg>
+               <svg class="button" id="optimize" style="width: 96; height: 31; margin: 0;" >
+                  <rect class="button" width="95" height="30" />
+                  <text class="button">Optimize</text>
+               </svg>
             </g>
          </span>
          <span id="LPPlot" class="container" style="position: relative;width: 600px; height: 100%;"> 
@@ -75,7 +81,7 @@
          <p></p>
       </div>
        
-       <text> Plot Legend: The filled in dots (which you can mouse over to see their values) represent basic solutions. If they are black, they are basic infeasible solutions. If they are green, they are basic feasible solutions. (Bonus Question: Why do we refer to these points as basic solutions?) The blue line is the optimal instance of our objective function, i.e. our objective function set equal to our optimal value. The entire green region is the feasible set, which is empty if not plotted. If it continues to the edge of the graph, it is unbounded. The feasible set consists of innumerably infinite feasible solutions, but only those solutions that intersect the blue optimal iteration of the objective function are optimal feasible solutions.</text> <br> <br>
+       <text> Plot Legend: The filled in dots (which you can mouse over to see their values) represent basic solutions. If they are black, they are basic infeasible solutions. If they are green, they are basic feasible solutions. (Bonus Question: Why do we refer to these points as basic solutions?) The blue line is an instance of our objective function, i.e. our objective function set equal to a given constant. The feasible set is green if bounded, yellow if unbounded, and not shown if empty. If the feasible set is not one point, it consists of innumerably infinite feasible solutions, but only those solutions that intersect the green optimal iteration of the objective function are optimal feasible solutions.</text> <br> <br>
        
        <text> Answers to questions: 
             <br> Question 1: Can we have any basic solutions with only one half-space plotted? No, we cannot. Basic solutions are where constraints intersect in the space spanned by our decision variables. If there is only one constraint, there cannot be any intersections because one line cannot intersect with itself. <br>
@@ -97,6 +103,7 @@
    </body>
    <script>
       var isZoomed = false;
+      var contourConstant = 1;
       var linearModel = {
           objectiveFunction: {x1: 1, x2: 1, objective: "Maximize"},
           constraints: [],

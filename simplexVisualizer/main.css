@@ -4,6 +4,12 @@ text {
   color: black;
 }
 
+/*
+span:hover {
+  background: yellow;
+}
+*/
+
 a {
   font: 24px sans-serif;
   color: black;
@@ -76,6 +82,13 @@ path.solution {
     z-index:2;
 }
 
+path.optimalSolution {
+    stroke: SeaGreen;
+    stroke-width: 4px;
+    z-index:1;
+}
+
+
 
 circle.bounded {
   fill: SeaGreen;
@@ -130,10 +143,6 @@ div.container{
   text-align: center;
 }
 
-span.container{
-  text-align: center;
-}
-
 rect.button{
     fill:white;
     stroke:black;
@@ -173,6 +182,7 @@ svg.button:active{
   }
 
 span.container{
+  text-align: center;
   margin-top: 10px;
   margin-left: 10px;
   display: inline-block;

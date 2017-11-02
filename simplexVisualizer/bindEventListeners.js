@@ -17,7 +17,6 @@ var checkOnChange = function(input) {
     }
 }
 
-
 var addConstraint = function(constraint) {
     var n = linearModel.constraints.length;
     var container = d3.select("span#model>span.constraintContainer").append("span").attr("class","constraint")
@@ -71,8 +70,6 @@ var addConstraint = function(constraint) {
             linearModel.constraints.splice(currentIndex, 1);
             //relabel constraints:
             var i = 0;
-            console.log(currentIndex);
-            console.log(linearModel.constraints.length);
             for (;currentIndex < linearModel.constraints.length; currentIndex++) {
                 linearModel.constraints[currentIndex].inputReference.select("text").text("Constraint " + (currentIndex+1) + ":");
             }
@@ -96,8 +93,14 @@ var addConstraint = function(constraint) {
             linearModel.constraints[currentIndex].constant = checkOnInput(this);
             recalculateModel();
         }).on("change",function() {checkOnChange(this);});
+    
+//        container.on("mouseover", function() {
+//            d3.select(this).attr("style","background-color: #efefeb; pointer-events: all;");
+//        });
+//        container.on("mouseout", function() {
+//            d3.select(this).attr("style","background-color: none");
+//        }); //TODO: this works
 }
-
 
 var removeLastConstraint = function() {
     d3.selectAll("span#model").selectAll("span.constraint").filter(function(d, i,list) {
@@ -142,13 +145,25 @@ var bindEventListeners = function() {
        
        recalculateModel();
    });
+   
+   d3.select("span#model").select("svg.button#optimize").on('click', function() {
+       lpPlot.optimize();
+   });
     
     
     // objective function inputs:
     LPContainer.select("input.x1ObjectiveCoefficient").on("input", function() {
             linearModel.objectiveFunction.x1 = checkOnInput(this);
+            console.log(this);
             recalculateModel();
         }).on("change",function() {checkOnChange(this);});
+    
+        // objective function inputs:
+    LPContainer.select("input.contourConstant").on("input", function() {
+            contourConstant = checkOnInput(this);
+            recalculateModel();
+        }).on("change",function() {checkOnChange(this);});
+
 
     LPContainer.select("input.x2ObjectiveCoefficient").on("input", function() {
         linearModel.objectiveFunction.x2 = checkOnInput(this);
@@ -179,9 +194,9 @@ var bindEventListeners = function() {
         recalculateModel();
     }).on("change",function() {checkOnChange(this);});
 
-    LPContainer.selectAll("span.constraint").on("mouseover", function(d, i) {
-        d3.select(this).style("pointer-events: all; background:#DA704B");
-    });
+//    LPContainer.selectAll("span.constraint").on("mouseover", function(d, i) {
+//        d3.select(this).style("pointer-events: all; background:#DA704B");
+//    }); //TODO: this works
 
     LPContainer.selectAll("span.constraint>input.x2RestrictionCoefficient").on("input", function(d, i) {
         linearModel.constraints[i].x2 = checkOnInput(this);
