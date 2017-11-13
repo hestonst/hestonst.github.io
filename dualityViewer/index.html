@@ -1,0 +1,144 @@
+<!-- Author: Scott Heston-->
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>LP Visualizer</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+<!--      <script src="d3.js"></script>-->
+      <script src="helperFunctions.js"></script>
+       <script src="Plot.js"></script>       
+      <script src="bindEventListeners.js"></script>
+      <link rel="stylesheet" type="text/css" href="main.css">
+   </head>
+   <body>
+      <div class="container">
+         <h1>Visualizing Dual and Primal LPs</h1>
+
+          <text>This page is a demo of a potential tool to visualize duality in two-dimensional linear programs. By constraining the input to primal LPs with 2 constraints and 2 variables, users can experiment results of the weak and strong duality theorems through graphical experimentation to help insure their intuitions before more rigorous study.</text><br><br> 
+          <text>Examples and Comprehension Questions:<br> </text>
+           <a onclick="populatePredefinedCase('simplePrimal')" href="#">Example 1: A Simple Example</a><text><br> Question 1: Why do we have to restrict the number of constraints on an LP to plot its dual in 2 dimensions?
+          <br>Question 2: Is it possible for the optimal value of the dual to be less than the optimal value of the primal LP?
+          <br>Question 3: Is it possible for the optimal value of the dual to not equal the optimal value of the primal LP?
+          
+         <br>
+         <span id="model" class="container" style="text-align: left; width: 650px; height: 100%;">
+            <text style="pointer-events: all" class = "title">Provide Primal LP:</text>
+            <br>
+            <text>Decision Variables: X<sub>1</sub>, X<sub>2</sub></text>
+            <span class="constraintContainer">
+
+            </span><br>
+            <text>Objective Function:</text>
+            <span style="display:inline-block;position:relative;width:95px;">
+               <svg id="maximize" class="button" width="96" height="32" style="position:absolute;top:-21px;">
+                  <g transform="translate(1,1)" class="datum">
+                     <rect class="button" width="95" height="30" />
+                     <text id="maximize" class="button">Maximize</text>
+                  </g>
+               </svg>
+            </span>
+            <input type="number" class="x1ObjectiveCoefficient" width="50"value="1">
+            <text>X<sub>1</sub>+</text>
+            <input type="number" class="x2ObjectiveCoefficient" value="1">
+            <text>X<sub>2</sub> = </text>
+            <input type="number" class="contourConstant" value="1">
+            <!--            TODO:put SVG into g so that can't select text-->
+            <br>
+            <svg style="width: 30; height: 30; margin: 0;">
+               <!--svg for equal spacing-->
+            </svg>
+            <g id="addConstraintButton" class="button">
+<!--
+               <svg class="button" id="addConstraint" style="width: 146; height: 31; margin: 0;" >
+                  <rect class="button" width="145" height="30" />
+                  <text class="button">Add Constraint</text>
+               </svg>
+-->
+               <svg class="button" id="zoomOnFeasibleSet" style="width: 236; height: 31; margin: 0;" >
+                  <rect class="button" width="235" height="30" />
+                  <text class="button">Crop Plot To Feasible Set</text>
+               </svg>
+               <svg class="button" id="optimize" style="width: 96; height: 31; margin: 0;" >
+                  <rect class="button" width="95" height="30" />
+                  <text class="button">Optimize</text>
+               </svg>
+            </g>
+         </span>
+         <span id="primalPlot" class="container" style="position: relative;width: 600px; height: 100%;"> 
+         </span>
+          
+         <span id="dualModel" class="container" style="text-align: left; width: 650px; height: 100%;">
+            <text style="pointer-events: all" class = "title">Dual LP:</text>
+            <br>
+            <text>Decision Variables: Y<sub>1</sub>, Y<sub>2</sub></text>
+            <span class="constraintContainer">
+
+            </span><br>
+            <text>Objective Function:</text>
+            <text id="objective">Maximize</text>
+            <text class="x1ObjectiveCoefficient"></text>
+            <text> Y<sub>1</sub>+</text>
+            <text class="x2ObjectiveCoefficient"></text>
+            <text>Y<sub>2</sub> = </text>
+            <input type="number" class="contourConstant" value="1">
+            <br>
+            <svg style="width: 30; height: 30; margin: 0;">
+               <!--svg for equal spacing-->
+            </svg>
+            <g id="addConstraintButton" class="button">
+<!--
+               <svg class="button" id="addConstraint" style="width: 146; height: 31; margin: 0;" >
+                  <rect class="button" width="145" height="30" />
+                  <text class="button">Add Constraint</text>
+               </svg>
+-->
+               <svg class="button" id="zoomOnFeasibleSet" style="width: 236; height: 31; margin: 0;" >
+                  <rect class="button" width="235" height="30" />
+                  <text class="button">Crop Plot To Feasible Set</text>
+               </svg>
+               <svg class="button" id="optimize" style="width: 96; height: 31; margin: 0;" >
+                  <rect class="button" width="95" height="30" />
+                  <text class="button">Optimize</text>
+               </svg>
+            </g>
+         </span>
+         <span id="dualPlot" class="container" style="position: relative;width: 600px; height: 100%;"> 
+         </span>
+
+         <p></p>
+      </div>
+       
+       <text> Plot Legend: The filled in dots (which you can mouse over to see their values) represent basic solutions. If they are black, they are basic infeasible solutions. If they are green, they are basic feasible solutions. The blue line is an instance of our objective function, i.e. our objective function set equal to a given constant. The feasible set is green if bounded, yellow if unbounded, and not shown if empty. If the feasible set is not one point, it consists of innumerably infinite feasible solutions, but only those solutions that intersect the green optimal iteration of the objective function are optimal feasible solutions.</text> <br> <br>
+       
+
+       
+   </body>
+   <script>
+      var isZoomed = false;
+      var linearModel = {
+          objectiveFunction: {x1: 1, x2: 1, objective: "Maximize"},
+          constraints: [],
+          isCanonicalInequality: true
+      };
+      var linearModelCanonicalInequality = {
+          objectiveFunction: {x1: 1, x2: 1, objective: "Maximize"},
+          constraints: [],
+          bookKeepingVars: {
+                        x1PrimeIsInExcessOfx1By: 0, x2PrimeIsInExcessOfx2By: 0}
+      };
+
+      addConstraint({x1: 1, x2: 1, equality: "≤", constant: 4});
+      addConstraint({x1: 1, x2: 0, equality: "≤", constant: 3});
+      addConstraint({x1: 1, x2: 1, equality: "≤", constant: 2});
+      addConstraint({x1: 1, x2: 1, equality: "≤", constant: 1});
+
+      var primalPlot = new Plot(d3.select("span#primalPlot"), linearModel, "Plot of Primal LP", d3.select("span#model"),"X");
+      primalPlot.findDual();
+      var dualPlot = new Plot(d3.select("span#dualPlot"), primalPlot.dualModel, "Plot of Dual LP",  d3.select("span#dualModel"),"Y");
+      populatePredefinedCase("simplePrimal");
+      bindEventListeners();
+      
+   </script>
+</html>

@@ -1,0 +1,191 @@
+text {
+  font: 24px sans-serif;
+/*  pointer-events: none;*/
+  color: black;
+}
+
+/*
+span:hover {
+  background: yellow;
+}
+*/
+
+a {
+  font: 24px sans-serif;
+  color: black;
+}
+
+text.button {
+  font: 24px sans-serif;
+  pointer-events: none;
+  color: black;
+}
+
+span.hidden {
+    display:none;
+}
+div.hidden {
+    display:none;
+}
+div>span.hidden {
+    display:none;
+}
+div>span>span.hidden {
+    display:none;
+}
+
+
+
+svg#flowchart {
+    position: fixed; 
+    width: 100%; 
+    height: 400px; 
+    margin: 0;
+    pointer-events: none;
+    
+}
+
+path.constraint {
+    stroke: #ea79a4;
+}
+
+path.bounded {
+    stroke: lightgreen;
+    stroke-width: 4px;
+    z-index:-1;
+}
+path.unbounded {
+    stroke: #ebeb41;
+    stroke-width: 4px;
+    z-index:1;
+}
+polyline.unbounded {
+    fill: #ebeb41;
+    stroke: #ebeb41;
+    stroke-width:4px;
+    z-index:1;
+}
+polyline.bounded {
+    fill: lightgreen;
+    stroke: lightgreen;
+    stroke-width:4px;
+    z-index:1;
+}
+
+
+
+
+
+path.solution {
+    stroke: #6a47fc;
+    stroke-width: 4px;
+    z-index:2;
+}
+
+path.optimalSolution {
+    stroke: SeaGreen;
+    stroke-width: 4px;
+    z-index:1;
+}
+
+
+
+circle.bounded {
+  fill: SeaGreen;
+}
+
+circle.unbounded {
+  fill: #ebeb41;
+}
+
+
+circle.basicSolution {
+  fill: black;
+}
+
+input[type=number]  {
+    border: none;
+    font: 24px sans-serif;
+    border-bottom: 1px solid black;
+    width: 70px;
+}
+
+
+div.tooltip {	
+    display: inline;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;	
+    font: 24px sans-serif;
+    opacity: 0;
+    padding: 2px;				
+    text-decoration-color: black;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+}
+
+.title {
+  font: 36px sans-serif;
+}
+
+h1 {
+  font: 40px sans-serif;
+}
+
+h2 {
+  font: 36px sans-serif;
+}
+
+
+
+div.container{
+  text-align: center;
+}
+
+rect.button{
+    fill:white;
+    stroke:black;
+    stroke-width:1px;
+    fill-opacity:0.1;
+    stroke-opacity:0.9;
+    display:inline-block;
+    position:relative;
+}
+
+text.button{
+    font: 20px sans-serif;
+    transform: translate(5px, 21px);
+}
+
+svg.button{
+    display: inline-block;
+    
+}
+
+.button{
+    cursor: pointer;
+}
+
+svg.button:hover{
+    opacity: 0.8;
+}
+
+svg.container {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+svg.button:active{
+    opacity: 0;
+  }
+
+span.container{
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align:top;
+  outline: 1px solid black;
+}
