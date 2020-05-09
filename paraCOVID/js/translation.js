@@ -1,5 +1,18 @@
 var strings = ["Get free legal help"];
 
+
+// function isAppleDevice() {
+//   return (
+//     (navigator.userAgent.toLowerCase().indexOf("ipad") > -1) ||
+//     (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) ||
+//     (navigator.userAgent.toLowerCase().indexOf("ipod") > -1)
+//    );
+// }
+// if (isAppleDevice() {
+//   $('body').addClass('is_apple')
+// }
+
+
 function load_Chinese() {
     // Adds an element to the document
     strings = ["获得免费的法律帮助"];
