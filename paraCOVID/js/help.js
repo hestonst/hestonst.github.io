@@ -1,6 +1,6 @@
 var head = document.getElementsByClassName("myhead")[0];
 var blurb = document.getElementsByClassName("blurb")[0];
-blacken("homebutton");
+
 
 function clearMain() {
     // Adds an element to the document
@@ -86,7 +86,7 @@ function update() {
     // Populate the form, display first information
     document.getElementsByClassName("unhideme")[0].style.display = "";
     head.innerHTML = "Connect with those in need via modern web forms available 24/7 on mobile or a computer: walk through an early demo of our website."
-    blurb.innerHTML = "This demo will ask you for some basic information and then autofill a PDF with that information. You can use this functionality in the languages shown above. Our goal is to automate COVID-related paralegal work so that pro bono law groups can provide people with aid efficiently under duress in these dificult times."
+    blurb.innerHTML = "This demo will ask you for some basic information and then autofill a PDF with that information. You can use this functionality in the languages shown above. Our goal is to automate COVID-related paralegal work so that pro bono law groups can provide people with aid efficiently under duress in these dificult times. Our goal is to make the process of acquiring pro-bono legal help easier for individuals affected by COVID-19."
 
   } else if (current_form == 2) {
     console.log("2 entered");
