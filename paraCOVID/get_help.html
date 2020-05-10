@@ -13,6 +13,15 @@
 
 		<script src="js/help.js"></script>
 		<script src="js/translation.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js?render=6LcwCfUUAAAAAIhgOPsq9AeR9IF0B4ujePu8VGP0"></script>
+		<script>
+		grecaptcha.ready(function() {
+		    grecaptcha.execute('6LcwCfUUAAAAAIhgOPsq9AeR9IF0B4ujePu8VGP0', {action: 'homepage'}).then(function(token) {
+		       ...
+		    });
+		});
+		</script>
+
 	</head>
 	<body class="is-preload">
 
@@ -27,9 +36,9 @@
 								<header id="header">
 									<!-- <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a> -->
 									<ul class="logo" style="text-align:left;">
-										<li style="display: inline;"><a onclick="" href="#javascript:void(0);" class="logo"><span class="language">ParaCOVID</span></a></li>
+										<li style="display: inline;"><a onclick="" href="#javascript:void(0);" class="logo"><span class="language">ParaCOVID Home</span></a></li>
 										<li style="display: inline;"><a onclick="" href="#javascript:void(0);" class="logo"><span class="language">For Attorneys</span></a></li>
-										<li style="display: inline;"><a onclick="" href="#javascript:void(0);" class="logo"><span class="language">Sample Page</span></a></li>
+										<li style="display: inline;"><a onclick="" href="#javascript:void(0);" class="logo"><span class="language">Technical Demo</span></a></li>
 										<li style="display: inline;"><a onclick="" href="#javascript:void(0);" class="logo"><span class="language">About US</span></a></li>
 									</ul>
 									<ul class="icons">
@@ -41,17 +50,77 @@
 								</header>
 
 							<!-- Banner -->
+
 								<section id="banner">
+
 									<div class="content">
-										<header class="del">
-											<h1>Hundreds of lawyers have offered their pro bono aid.</h1>
-											<p class="del">Get matched with free volunteer law groups near you.</p>
+										<header>
+											<h2 class="myhead">Hundreds of lawyers have offered their pro bono aid.</h2>
 										</header>
+										<p class="blurb">Get matched with free volunteer law groups near you.</p>
 										<p class="del">We are facing an unprecedented global pandemic and many people are struggling. If you're facing a potentialy illegal eviction during COVID-19, we want to connect you to free legal help. We're all in this together.</p>
 										<ul class="actions">
 											<li><a onclick="clearMain();next();" href="#" class="button big del 0" >Get Free Legal Help</a></li>
 										</ul>
+
+										<form class="fullform" method="post" action="#" style="display:none;">
+											<div class="row gtr-uniform">
+												<div class="col-6 col-12-xsmall">
+													<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+												</div>
+												<div class="col-6 col-12-xsmall">
+													<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+												</div>
+												<!-- Break -->
+												<div class="col-12">
+													<select name="demo-category" id="demo-category">
+														<option value="">- Category -</option>
+														<option value="1">Manufacturing</option>
+														<option value="1">Shipping</option>
+														<option value="1">Administration</option>
+														<option value="1">Human Resources</option>
+													</select>
+												</div>
+												<!-- Break -->
+												<div class="col-4 col-12-small">
+													<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+													<label for="demo-priority-low">Low</label>
+												</div>
+												<div class="col-4 col-12-small">
+													<input type="radio" id="demo-priority-normal" name="demo-priority">
+													<label for="demo-priority-normal">Normal</label>
+												</div>
+												<div class="col-4 col-12-small">
+													<input type="radio" id="demo-priority-high" name="demo-priority">
+													<label for="demo-priority-high">High</label>
+												</div>
+												<!-- Break -->
+												<div class="col-6 col-12-small">
+													<input type="checkbox" id="demo-copy" name="demo-copy">
+													<label for="demo-copy">Email me a copy</label>
+												</div>
+												<div class="col-6 col-12-small">
+													<input type="checkbox" id="demo-human" name="demo-human" checked>
+													<label for="demo-human">I am a human</label>
+												</div>
+												<!-- Break -->
+												<div class="g-recaptcha" data-sitekey="my-public-key"></div>
+												<!-- Break -->
+											</div>
+										</form>
+
+										<div class="unhideme" style="display:none;">
+												<div>
+													<a onclick="back()"; class="button 1 icons" href="#" style="text-align: center;">Back</a>
+													<a onclick="next()" class="button 2" href="#" style="float: right; text-align: center;">Continue</a>
+												</div>
+										</div>
+
+
+
 									</div>
+
+
 									<span class="image object del">
 										<img src="images/legal_symbol.png" alt="" />
 									</span>
@@ -92,6 +161,7 @@
 											</div>
 										</article>
 									</div>
+
 								</section>
 
 							<!-- Section -->
