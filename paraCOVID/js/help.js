@@ -25,7 +25,7 @@ function notAboutUs() {
 function home() {
     notAboutUs();
     blacken("homebutton");
-    document.getElementById("demobutton").innerHTML = "Get Free Legal Help";
+    document.getElementById("nextbutton").innerHTML = "Get Free Legal Help";
     current_form = 0;
     document.getElementsByClassName("unhideme")[0].style.display = "none";
     document.getElementsByClassName("fullform")[0].style.display = "none";
@@ -97,7 +97,31 @@ function update() {
     head.innerHTML = "Enter your information for a demonstration of auto-filling forms for your clients."
     blurb.innerHTML = ""
 
+    document.getElementById("continuebutton").innerHTML = "Download Form";
     document.getElementsByClassName("fullform")[0].style.display = ""
+  } else if (current_form == 4) {
+    download("form.pdf","");
+    document.getElementById("continuebutton").innerHTML = "Continue";
+    home();
   }
 
   }
+
+
+
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+//
+// // Start file download.
+// download("hello.txt","This is the content of my file :)");
