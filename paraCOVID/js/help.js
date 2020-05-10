@@ -35,7 +35,7 @@ function home() {
 function for_attorneys() {
   home();
   notAboutUs();
-  document.getElementById("demobutton").innerHTML = "Try Our Product Demo";
+  document.getElementById("nextbutton").innerHTML = "Try Our Product Demo";
   head.innerHTML = "If your firm is offering pro bono services during COVID-19, we want to provide you with the best modern web tools to reach out to those in need.";
   blurb.innerHTML = "Try our demo to see how we can automate your paralegal services. Thank you for your services to communities in need during this unprecedented global pandemic.";
   blacken("attorneysbutton");
