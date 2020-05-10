@@ -13,14 +13,8 @@
 
 		<script src="js/help.js"></script>
 		<script src="js/translation.js"></script>
-		<script src="https://www.google.com/recaptcha/api.js?render=6LcwCfUUAAAAAIhgOPsq9AeR9IF0B4ujePu8VGP0"></script>
-		<script>
-		grecaptcha.ready(function() {
-		    grecaptcha.execute('6LcwCfUUAAAAAIhgOPsq9AeR9IF0B4ujePu8VGP0', {action: 'homepage'}).then(function(token) {
-		       ...
-		    });
-		});
-		</script>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 	</head>
 	<body class="is-preload">
@@ -104,7 +98,11 @@
 													<label for="demo-human">I am a human</label>
 												</div>
 												<!-- Break -->
-												<div class="g-recaptcha" data-sitekey="my-public-key"></div>
+												<form action="?" method="POST">
+										      <div class="g-recaptcha" data-sitekey="6LcyCvUUAAAAAF6P8TCpgInoUix9B12tYiFtJEBk"></div>
+										      <br/>
+										      <input type="submit" value="Submit">
+										    </form>
 												<!-- Break -->
 											</div>
 										</form>
