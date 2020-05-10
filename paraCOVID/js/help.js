@@ -86,12 +86,12 @@ function update() {
     // Populate the form, display first information
     document.getElementsByClassName("unhideme")[0].style.display = "";
     head.innerHTML = "Connect with those in need via modern web forms available 24/7 on mobile or a computer: walk through an early demo of our website."
-    blurb.innerHTML = "This demo will ask you for some basic information and then autofill a PDF with that information. You can use this functionality in the languages shown above. Our goal is to automate COVID-related paralegal work so that pro bono law groups can provide people with aid efficiently under duress in these dificult times. Our goal is to make the process of acquiring pro-bono legal help easier for individuals affected by COVID-19."
+    blurb.innerHTML = "This demo will ask you for some basic information and then autofill a PDF with that information. You can use this functionality in the languages shown above. Our goal is to automate COVID-related paralegal work so that pro bono law groups can provide people with aid efficiently under duress in these difficult times. Our goal is to make the process of acquiring pro-bono legal help easier for individuals affected by COVID-19."
 
   } else if (current_form == 2) {
     console.log("2 entered");
     head.innerHTML = '"Courage – you develop courage by doing small things like just as if you wouldn’t want to pick up a 100-pound weight without preparing yourself" --Maya Angelou'
-    blurb.innerHTML = "We want to remind people in need of legal help that we are all in this pandemic together with positive language and quotes. Inability to access healthcare or legal resources due to barriers such as language and financial resources perpetuates disparities. ParaCOVID will connect individuals with legal resources in a culturally sensitive way, and facilitate the process of connecting individuals with guidance to address the stressors brought on by the pandemic’s impacts. "
+    blurb.innerHTML = "We want to remind people in need of legal help that we are all in this pandemic together with positive language. Inability to access healthcare or legal resources due to barriers such as language and financial resources perpetuates disparities. ParaCOVID will connect individuals with legal resources in a culturally sensitive way, and facilitate the process of connecting individuals with guidance to address the stressors brought on by the pandemic’s impacts. "
     document.getElementsByClassName("fullform")[0].style.display = "none";
   } else if (current_form == 3) {
     head.innerHTML = "Enter your information for a demonstration of auto-filling forms for your clients."
